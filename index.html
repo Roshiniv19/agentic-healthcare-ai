@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agentic AI-Powered Healthcare Intelligence and Patient Assistance System - AegisHealth AI</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Custom Medical Theme Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       SHARED NAVBAR
+       ======================================================================== -->
+  <nav class="navbar navbar-expand-xl site-navbar sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <div class="brand-icon">
+          <img src="images/logo.svg" alt="AegisHealth AI" width="40" height="40">
+        </div>
+        <div>
+          <span class="text-primary fw-bold">AegisHealth</span><span class="text-teal">.AI</span>
+          <span class="brand-text-sub">Healthcare Intelligence</span>
+        </div>
+      </a>
+
+      <!-- Mobile Toggler -->
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-list fs-2 text-primary"></i>
+      </button>
+
+      <!-- Navigation Menu -->
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav mx-auto mb-2 mb-xl-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">
+              <i class="bi bi-house-door"></i> Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/patient-assistant.html">
+              <i class="bi bi-chat-heart"></i> AI Assistant
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/symptom-checker.html">
+              <i class="bi bi-clipboard2-pulse"></i> Symptom Checker
+            </a>
+          </li>
+          
+          <!-- Dashboards Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dashboardsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-speedometer2"></i> Dashboards
+            </a>
+            <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="dashboardsDropdown">
+              <li>
+                <a class="dropdown-item py-2" href="pages/patient-dashboard.html">
+                  <i class="bi bi-person-badge text-teal me-2"></i> Patient Dashboard
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item py-2" href="pages/doctor-dashboard.html">
+                  <i class="bi bi-hospital text-primary me-2"></i> Doctor Dashboard
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="pages/reminders.html">
+              <i class="bi bi-alarm"></i> Reminders
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/appointments.html">
+              <i class="bi bi-calendar2-check"></i> Appointments
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/health-records.html">
+              <i class="bi bi-file-earmark-medical"></i> Lab Records
+            </a>
+          </li>
+        </ul>
+
+        <!-- Right Action Items -->
+        <div class="d-flex align-items-center gap-2 mt-2 mt-xl-0">
+          <a href="pages/login.html" class="btn btn-sm btn-med-outline d-inline-flex align-items-center gap-1">
+            <i class="bi bi-person-circle"></i>
+            <span>Login / Register</span>
+          </a>
+
+          <a href="pages/emergency.html" class="btn-emergency-nav text-decoration-none" title="112 (Emergency) & 108 (Ambulance)">
+            <i class="bi bi-telephone-fill"></i>
+            <span>SOS 112 / 108</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Safety Top Banner -->
+    <div class="container mt-3">
+      <div class="safety-disclaimer-banner">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        <div class="flex-grow-1">
+          <strong>Important Medical Notice:</strong> AI suggestions are for guidance only, not a medical diagnosis. In case of acute chest pain, severe breathlessness, or immediate danger, dial 112 (Emergency) or 108 (Ambulance) or visit the nearest ER immediately.
+        </div>
+        <button type="button" class="btn-close emergency-banner-close" aria-label="Close"></button>
+      </div>
+    </div>
+
+    <!-- ========================================================================
+         HERO SECTION
+         ======================================================================== -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="row align-items-center gy-5">
+          <div class="col-lg-7">
+            <div class="hero-pill-badge">
+              <i class="bi bi-stars text-primary"></i> Next-Generation Multi-Agent Clinical AI Architecture
+            </div>
+            <h1 class="hero-title">
+              Agentic AI-Powered Healthcare Intelligence and <span class="text-gradient-med">Patient Assistance System</span>
+            </h1>
+            <p class="hero-lead">
+              Collaborative autonomous AI agents working in harmony to streamline patient triage, verify prescription safety, interpret lab diagnostics, and augment physician decision-making with clinical guardrails.
+            </p>
+
+            <div class="d-flex flex-wrap gap-3 mb-4">
+              <a href="pages/patient-assistant.html" class="btn btn-med-primary btn-lg">
+                <i class="bi bi-chat-dots-fill me-2"></i> Launch Patient AI Assistant
+              </a>
+              <a href="pages/symptom-checker.html" class="btn btn-med-outline btn-lg">
+                <i class="bi bi-heart-pulse me-2"></i> Guided Symptom Triage
+              </a>
+            </div>
+
+            <!-- Quick Trust Metrics -->
+            <div class="row g-3 pt-3 border-top">
+              <div class="col-4">
+                <div class="fw-bold text-dark fs-5">5 Specialized</div>
+                <div class="small text-muted">Autonomous Agents</div>
+              </div>
+              <div class="col-4 border-start border-end">
+                <div class="fw-bold text-teal fs-5">&lt; 3.2 sec</div>
+                <div class="small text-muted">Triage Stratification</div>
+              </div>
+              <div class="col-4">
+                <div class="fw-bold text-primary fs-5">100% Guardrailed</div>
+                <div class="small text-muted">Doctor-in-the-Loop</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="text-center">
+              <img src="images/hero-illustration.svg" alt="Agentic Healthcare AI System" class="img-fluid" style="max-height: 400px;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         AGENTIC ARCHITECTURE & COLLABORATIVE WORKFLOW
+         ======================================================================== -->
+    <section class="py-5 bg-white">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="badge badge-soft-blue px-3 py-2 text-uppercase mb-2">How It Works</span>
+          <h2 class="fw-bold">Autonomous Multi-Agent Swarm for Healthcare</h2>
+          <p class="text-muted mx-auto" style="max-width: 650px;">
+            Unlike simple single-turn bots, our system coordinates specialized medical AI agents that independently evaluate symptoms, check contraindications, and synthesize safe guidance.
+          </p>
+        </div>
+
+        <div class="row g-4">
+          <!-- Agent 1: Coordinator -->
+          <div class="col-md-6 col-lg-3">
+            <div class="agent-node-card active-node">
+              <span class="step-indicator">Agent 01</span>
+              <div class="icon-box-circle icon-box-blue mt-2">
+                <i class="bi bi-cpu"></i>
+              </div>
+              <h5 class="fw-bold mb-1">Dr. Nexus</h5>
+              <div class="small text-primary fw-semibold mb-2">Chief Coordinator Agent</div>
+              <p class="text-muted small mb-3">
+                Orchestrates incoming patient context, extracts clinical entities, and delegates to specialized sub-agents.
+              </p>
+              <div class="badge bg-light text-dark border small w-100 py-2">Entity Extraction & Routing</div>
+            </div>
+          </div>
+
+          <!-- Agent 2: Triage -->
+          <div class="col-md-6 col-lg-3">
+            <div class="agent-node-card">
+              <span class="step-indicator" style="background-color: var(--med-danger);">Agent 02</span>
+              <div class="icon-box-circle icon-box-blue mt-2" style="background-color: var(--med-danger-light); color: var(--med-danger);">
+                <i class="bi bi-heart-pulse-fill"></i>
+              </div>
+              <h5 class="fw-bold mb-1">Triage Sentinel</h5>
+              <div class="small text-danger fw-semibold mb-2">Urgency & Red-Flag Agent</div>
+              <p class="text-muted small mb-3">
+                Continuously evaluates vital signs and symptom severity against emergency triage protocols (ESI Levels 1-5).
+              </p>
+              <div class="badge bg-light text-dark border small w-100 py-2">Emergency Stratification</div>
+            </div>
+          </div>
+
+          <!-- Agent 3: Pharma -->
+          <div class="col-md-6 col-lg-3">
+            <div class="agent-node-card">
+              <span class="step-indicator" style="background-color: var(--med-teal);">Agent 03</span>
+              <div class="icon-box-circle icon-box-teal mt-2">
+                <i class="bi bi-capsule"></i>
+              </div>
+              <h5 class="fw-bold mb-1">RxGuard</h5>
+              <div class="small text-teal fw-semibold mb-2">Pharmacology & Safety Agent</div>
+              <p class="text-muted small mb-3">
+                Cross-references medications, potential adverse interactions, food-drug contraindications, and dosage schedules.
+              </p>
+              <div class="badge bg-light text-dark border small w-100 py-2">Drug Interaction Checking</div>
+            </div>
+          </div>
+
+          <!-- Agent 4: Diagnostic -->
+          <div class="col-md-6 col-lg-3">
+            <div class="agent-node-card">
+              <span class="step-indicator" style="background-color: #0369a1;">Agent 04</span>
+              <div class="icon-box-circle icon-box-blue mt-2" style="background-color: #e0f2fe; color: #0369a1;">
+                <i class="bi bi-file-earmark-medical"></i>
+              </div>
+              <h5 class="fw-bold mb-1">LabInsight</h5>
+              <div class="small text-primary fw-semibold mb-2">Biomarker & EHR Explainer</div>
+              <p class="text-muted small mb-3">
+                Translates complex laboratory panels (CBC, Lipid, HbA1c) into plain-English summaries for patients and doctors.
+              </p>
+              <div class="badge bg-light text-dark border small w-100 py-2">EHR Diagnostics Translation</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         CORE MODULES OVERVIEW
+         ======================================================================== -->
+    <section class="py-5" style="background-color: #f8fafc;">
+      <div class="container">
+        <div class="row align-items-center mb-5">
+          <div class="col-lg-6">
+            <span class="badge badge-soft-teal px-3 py-2 text-uppercase mb-2">System Modules</span>
+            <h2 class="fw-bold">Comprehensive Healthcare Intelligence Portal</h2>
+          </div>
+          <div class="col-lg-6 text-lg-end">
+            <a href="pages/patient-assistant.html" class="btn btn-med-teal">
+              Explore All Features <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <!-- Card 1 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="med-card h-100">
+              <div class="icon-box-circle icon-box-blue">
+                <i class="bi bi-chat-square-text-fill"></i>
+              </div>
+              <h4 class="fw-bold fs-5">Multi-Agent Patient Assistant</h4>
+              <p class="text-muted small">
+                Engage in conversational guidance with specialized agents. Inquire about persistent symptoms, prescription schedules, and recuperation steps.
+              </p>
+              <a href="pages/patient-assistant.html" class="fw-bold text-primary small d-inline-flex align-items-center gap-1">
+                Open Assistant <i class="bi bi-chevron-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="med-card h-100">
+              <div class="icon-box-circle icon-box-teal">
+                <i class="bi bi-activity"></i>
+              </div>
+              <h4 class="fw-bold fs-5">Symptom Assessment Wizard</h4>
+              <p class="text-muted small">
+                Step-by-step clinical questionnaire with severity gauges, timeline tracking, and automated generation of a printable triage summary.
+              </p>
+              <a href="pages/symptom-checker.html" class="fw-bold text-teal small d-inline-flex align-items-center gap-1">
+                Start Assessment <i class="bi bi-chevron-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="med-card h-100">
+              <div class="icon-box-circle icon-box-blue">
+                <i class="bi bi-clipboard2-data-fill"></i>
+              </div>
+              <h4 class="fw-bold fs-5">Clinical Decision Support</h4>
+              <p class="text-muted small">
+                Healthcare provider dashboard equipped with real-time patient queue stratification, vital anomaly warnings, and differential diagnosis aid.
+              </p>
+              <a href="pages/doctor-intelligence.html" class="fw-bold text-primary small d-inline-flex align-items-center gap-1">
+                Access Clinical Portal <i class="bi bi-chevron-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="med-card h-100">
+              <div class="icon-box-circle icon-box-teal">
+                <i class="bi bi-calendar-check-fill"></i>
+              </div>
+              <h4 class="fw-bold fs-5">Smart Specialist Recommender</h4>
+              <p class="text-muted small">
+                Intelligently matches symptom profiles with verified cardiologists, neurologists, pulmonologists, and general physicians for immediate scheduling.
+              </p>
+              <a href="pages/appointments.html" class="fw-bold text-teal small d-inline-flex align-items-center gap-1">
+                Book Specialist <i class="bi bi-chevron-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="med-card h-100">
+              <div class="icon-box-circle icon-box-blue">
+                <i class="bi bi-file-medical-fill"></i>
+              </div>
+              <h4 class="fw-bold fs-5">Lab Report Plain Explainer</h4>
+              <p class="text-muted small">
+                Toggle between technical laboratory values and friendly AI interpretations. Highlights out-of-range markers with actionable wellness tips.
+              </p>
+              <a href="pages/health-records.html" class="fw-bold text-primary small d-inline-flex align-items-center gap-1">
+                View Sample Records <i class="bi bi-chevron-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="col-md-6 col-lg-4">
+            <div class="med-card h-100" style="border-left: 4px solid var(--med-danger);">
+              <div class="icon-box-circle" style="background-color: var(--med-danger-light); color: var(--med-danger);">
+                <i class="bi bi-shield-exclamation"></i>
+              </div>
+              <h4 class="fw-bold fs-5 text-danger">Emergency SOS & First Aid</h4>
+              <p class="text-muted small">
+                Rapid one-tap emergency calling, first-aid step-by-step visual guides for CPR, choking, acute allergic reactions, and nearest urgent care locator.
+              </p>
+              <a href="pages/emergency.html" class="fw-bold text-danger small d-inline-flex align-items-center gap-1">
+                Open SOS Hub <i class="bi bi-chevron-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         INTERACTIVE QUICK SYMPTOM TRIAGE PREVIEW WIDGET
+         ======================================================================== -->
+    <section class="py-5 bg-white border-top">
+      <div class="container">
+        <div class="row align-items-center gy-4">
+          <div class="col-lg-5">
+            <span class="badge badge-soft-blue px-3 py-2 text-uppercase mb-2">Live Demo</span>
+            <h3 class="fw-bold mb-3">Experience Instant AI Triage Evaluation</h3>
+            <p class="text-muted">
+              Select a frequent health inquiry below to preview how our autonomous Triage Sentinel parses severity, flags potential emergencies, and suggests appropriate clinical care.
+            </p>
+            <div class="d-flex flex-column gap-2 mb-4">
+              <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-check-circle-fill text-teal"></i>
+                <span class="small fw-semibold">Zero-latency initial risk scoring</span>
+              </div>
+              <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-check-circle-fill text-teal"></i>
+                <span class="small fw-semibold">Continuous red-flag symptom surveillance</span>
+              </div>
+              <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-check-circle-fill text-teal"></i>
+                <span class="small fw-semibold">Prepares a medical briefing for your doctor</span>
+              </div>
+            </div>
+            <a href="pages/symptom-checker.html" class="btn btn-med-primary">
+              Full 5-Step Symptom Assessment <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+          </div>
+
+          <div class="col-lg-7">
+            <div class="med-card-static border shadow-sm p-4">
+              <h5 class="fw-bold mb-3 d-flex align-items-center justify-content-between">
+                <span><i class="bi bi-robot text-primary me-2"></i>Quick Agentic Consultation</span>
+                <span class="badge badge-soft-teal">Triage Mode</span>
+              </h5>
+
+              <label class="form-label small fw-bold text-dark">Try a sample query or describe your condition:</label>
+              <div class="prompt-suggestions mb-3">
+                <button type="button" class="suggestion-chip" onclick="document.getElementById('quick-prompt').value='I have had a mild throbbing headache for 2 days without fever'">Mild headache (2 days)</button>
+                <button type="button" class="suggestion-chip" onclick="document.getElementById('quick-prompt').value='Can I take ibuprofen if I was prescribed amoxicillin this morning?'">Amoxicillin + Ibuprofen</button>
+                <button type="button" class="suggestion-chip" onclick="document.getElementById('quick-prompt').value='Sudden crushing chest pain radiating to left arm'">Chest pain (Emergency)</button>
+              </div>
+
+              <div class="input-group mb-3">
+                <input type="text" id="quick-prompt" class="form-control" placeholder="Describe symptoms or question...">
+                <button class="btn btn-med-primary" type="button" id="quick-eval-btn">
+                  Analyze <i class="bi bi-send-fill ms-1"></i>
+                </button>
+              </div>
+
+              <!-- Quick Result Container -->
+              <div id="quick-result-box" class="p-3 bg-light rounded border" style="display: none;">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                  <div class="fw-bold small text-primary" id="quick-agent-source">Dr. Nexus AI</div>
+                  <span id="quick-risk-tag" class="badge"></span>
+                </div>
+                <div id="quick-result-text" class="small text-dark mb-2"></div>
+                <div id="quick-result-action" class="small fw-bold"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         CLINICAL SAFETY & ETHICAL GUARDRAILS
+         ======================================================================== -->
+    <section class="py-5" style="background: linear-gradient(180deg, #f8fafc 0%, #f0f9ff 100%);">
+      <div class="container text-center">
+        <span class="badge badge-soft-teal px-3 py-2 text-uppercase mb-2">Safety Standards</span>
+        <h2 class="fw-bold mb-3">Built with Stringent Medical Ethics</h2>
+        <p class="text-muted mx-auto mb-5" style="max-width: 600px;">
+          Our system is engineered as an auxiliary co-pilot, maintaining human physician primacy and patient safety at every layer.
+        </p>
+
+        <div class="row g-4 text-start">
+          <div class="col-md-4">
+            <div class="bg-white p-4 rounded-3 border h-100 shadow-sm">
+              <i class="bi bi-person-check-fill text-primary fs-3 mb-2 d-block"></i>
+              <h5 class="fw-bold">Doctor-in-the-Loop</h5>
+              <p class="text-muted small mb-0">
+                All high-stakes clinical summaries require licensed physician review and endorsement before entry into permanent EHR records.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="bg-white p-4 rounded-3 border h-100 shadow-sm">
+              <i class="bi bi-shield-lock-fill text-teal fs-3 mb-2 d-block"></i>
+              <h5 class="fw-bold">Data Privacy Ready</h5>
+              <p class="text-muted small mb-0">
+                End-to-end data encryption for sensitive patient health information in compliance with modern medical privacy principles.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="bg-white p-4 rounded-3 border h-100 shadow-sm">
+              <i class="bi bi-signpost-split-fill text-danger fs-3 mb-2 d-block"></i>
+              <h5 class="fw-bold">Fail-Safe Emergency Intercept</h5>
+              <p class="text-muted small mb-0">
+                Any detection of acute hemodynamic instability instantly redirects the patient to direct emergency dialing and dispatch instructions.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       SHARED FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <!-- Prominent Medical Disclaimer Box -->
+      <div class="footer-disclaimer-box">
+        <i class="bi bi-info-circle-fill disclaimer-icon"></i>
+        <div>
+          <h6 class="fw-bold mb-1 text-dark">Medical Safety Disclaimer:</h6>
+          <p class="footer-disclaimer-text">
+            This platform utilizes agentic artificial intelligence designed to assist, educate, and coordinate healthcare information. 
+            <span class="mandatory-note">AI suggestions are for guidance only, not a medical diagnosis. Please consult a doctor.</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="row g-4 mb-4">
+        <!-- Col 1: Brand -->
+        <div class="col-lg-4 col-md-6">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <img src="images/logo.svg" alt="AegisHealth AI" width="34" height="34">
+            <span class="fw-bold fs-5 text-dark">AegisHealth<span class="text-teal">.AI</span></span>
+          </div>
+          <div class="fw-bold text-dark small mb-2">Agentic AI-Powered Healthcare Intelligence and Patient Assistance System</div>
+          <p class="text-muted small mb-3">
+            An advanced agentic AI healthcare intelligence ecosystem connecting patients with autonomous triage, medication cross-checking, and physician-supervised decision support.
+          </p>
+          <div class="agent-status-badge">
+            <span class="pulse-dot"></span>
+            <span>Multi-Agent Swarm Operational</span>
+          </div>
+        </div>
+
+        <!-- Col 2: Navigation -->
+        <div class="col-lg-2 col-md-6 col-6">
+          <h6 class="footer-heading">Platform Modules</h6>
+          <ul class="footer-links">
+            <li><a href="index.html">Home Overview</a></li>
+            <li><a href="pages/patient-assistant.html">AI Assistant</a></li>
+            <li><a href="pages/symptom-checker.html">Symptom Checker</a></li>
+            <li><a href="pages/patient-dashboard.html">Patient Dashboard</a></li>
+            <li><a href="pages/doctor-dashboard.html">Doctor Dashboard</a></li>
+            <li><a href="pages/reminders.html">Pill Reminders</a></li>
+            <li><a href="pages/appointments.html">Appointments</a></li>
+            <li><a href="pages/health-records.html">Lab Records</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Agents -->
+        <div class="col-lg-3 col-md-6 col-6">
+          <h6 class="footer-heading">Autonomous Agents</h6>
+          <ul class="footer-links">
+            <li><a href="pages/patient-assistant.html">Dr. Nexus (Coordinator)</a></li>
+            <li><a href="pages/symptom-checker.html">Triage Sentinel (ESI Level)</a></li>
+            <li><a href="pages/patient-assistant.html">RxGuard (Pharma Safety)</a></li>
+            <li><a href="pages/health-records.html">LabInsight (EHR Biomarkers)</a></li>
+            <li><a href="pages/patient-assistant.html">NutriHealth (Lifestyle)</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Urgent Emergency -->
+        <div class="col-lg-3 col-md-6">
+          <h6 class="footer-heading text-danger"><i class="bi bi-shield-fill-exclamation me-1"></i>Emergency Hotlines (India)</h6>
+          <div class="p-3 bg-light rounded border border-danger-subtle">
+            <div class="fw-bold text-dark small mb-1">Immediate Assistance:</div>
+            <div class="fs-6 fw-bold text-danger mb-2">112 (Emergency) • 108 (Ambulance)</div>
+            <div class="small text-muted mb-1">Maternal & Child Health: <strong>102</strong></div>
+            <div class="small text-muted mb-2">National Health Helpline: <strong>1075</strong></div>
+            <a href="pages/emergency.html" class="btn btn-sm btn-outline-danger w-100 mt-1 fw-semibold">
+              <i class="bi bi-geo-alt-fill me-1"></i> Emergency SOS Hub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <div>
+          &copy; 2026 <strong>Agentic AI-Powered Healthcare Intelligence and Patient Assistance System</strong>. All rights reserved.
+        </div>
+        <div class="d-flex gap-3">
+          <span class="text-muted">Clean Medical UI • Bootstrap 5 & Vanilla JS</span>
+          <a href="#" class="text-muted" onclick="alert('All user medical prompts and vitals are kept local in this frontend simulation.'); return false;">Privacy Note</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 Bundle JS (Popper included) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Global Shared JS -->
+  <script src="js/main.js"></script>
+
+  <!-- Interactive Quick Preview Script for Landing Page -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const evalBtn = document.getElementById('quick-eval-btn');
+      const promptInput = document.getElementById('quick-prompt');
+      const resultBox = document.getElementById('quick-result-box');
+      const agentSource = document.getElementById('quick-agent-source');
+      const riskTag = document.getElementById('quick-risk-tag');
+      const resultText = document.getElementById('quick-result-text');
+      const resultAction = document.getElementById('quick-result-action');
+
+      if (evalBtn && promptInput) {
+        evalBtn.addEventListener('click', () => {
+          const val = promptInput.value.trim();
+          if (!val) {
+            showToast("Input Required", "Please enter symptoms or select a prompt.", "warning");
+            return;
+          }
+
+          evalBtn.disabled = true;
+          evalBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span> Analyzing...';
+
+          setTimeout(() => {
+            evalBtn.disabled = false;
+            evalBtn.innerHTML = 'Analyze <i class="bi bi-send-fill ms-1"></i>';
+            resultBox.style.display = 'block';
+
+            const lower = val.toLowerCase();
+            if (lower.includes('chest pain') || lower.includes('crushing')) {
+              agentSource.textContent = "Triage Sentinel Agent (CRITICAL ALERT)";
+              riskTag.className = "badge bg-danger";
+              riskTag.textContent = "EMERGENCY";
+              resultText.innerHTML = "<strong>CRITICAL RED FLAG:</strong> Crushing chest pain requires immediate emergency evaluation to rule out acute myocardial infarction.";
+              resultAction.innerHTML = "<a href='pages/emergency.html' class='text-danger'>Initiate Emergency Protocol & Call 112 / 108 immediately &rarr;</a>";
+            } else if (lower.includes('amoxicillin') || lower.includes('ibuprofen')) {
+              agentSource.textContent = "RxGuard Pharmacological Agent";
+              riskTag.className = "badge bg-teal text-white";
+              riskTag.textContent = "COMPATIBLE";
+              resultText.innerHTML = "Amoxicillin and Ibuprofen generally have no severe drug-drug contraindication for healthy adults. Always take ibuprofen with food to protect gastric lining.";
+              resultAction.innerHTML = "<a href='pages/patient-assistant.html' class='text-primary'>Ask detailed dosage questions in AI Assistant &rarr;</a>";
+            } else {
+              agentSource.textContent = "Dr. Nexus Coordinator Agent";
+              riskTag.className = "badge bg-warning text-dark";
+              riskTag.textContent = "ROUTINE MONITORING";
+              resultText.innerHTML = `Identified: "${val}". Recommended initial steps: rest, hydration, and monitoring. If symptoms escalate beyond 48 hours, consult a physician.`;
+              resultAction.innerHTML = "<a href='pages/symptom-checker.html' class='text-primary'>Run Complete 5-Step Symptom Assessment &rarr;</a>";
+            }
+          }, 800);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

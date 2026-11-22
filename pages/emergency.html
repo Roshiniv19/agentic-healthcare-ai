@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emergency SOS & First Aid Guide - AegisHealth AI</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Custom Medical Theme Stylesheet -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       SHARED NAVBAR
+       ======================================================================== -->
+  <nav class="navbar navbar-expand-xl site-navbar sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">
+        <div class="brand-icon">
+          <img src="../images/logo.svg" alt="AegisHealth AI" width="40" height="40">
+        </div>
+        <div>
+          <span class="text-primary fw-bold">AegisHealth</span><span class="text-teal">.AI</span>
+          <span class="brand-text-sub">Healthcare Intelligence</span>
+        </div>
+      </a>
+
+      <!-- Mobile Toggler -->
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-list fs-2 text-primary"></i>
+      </button>
+
+      <!-- Navigation Menu -->
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav mx-auto mb-2 mb-xl-0">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">
+              <i class="bi bi-house-door"></i> Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="patient-assistant.html">
+              <i class="bi bi-chat-heart"></i> AI Assistant
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="symptom-checker.html">
+              <i class="bi bi-clipboard2-pulse"></i> Symptom Checker
+            </a>
+          </li>
+          
+          <!-- Dashboards Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dashboardsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-speedometer2"></i> Dashboards
+            </a>
+            <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="dashboardsDropdown">
+              <li>
+                <a class="dropdown-item py-2" href="patient-dashboard.html">
+                  <i class="bi bi-person-badge text-teal me-2"></i> Patient Dashboard
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item py-2" href="doctor-dashboard.html">
+                  <i class="bi bi-hospital text-primary me-2"></i> Doctor Dashboard
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="reminders.html">
+              <i class="bi bi-alarm"></i> Reminders
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="appointments.html">
+              <i class="bi bi-calendar2-check"></i> Appointments
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="health-records.html">
+              <i class="bi bi-file-earmark-medical"></i> Lab Records
+            </a>
+          </li>
+        </ul>
+
+        <!-- Right Action Items -->
+        <div class="d-flex align-items-center gap-2 mt-2 mt-xl-0">
+          <a href="login.html" class="btn btn-sm btn-med-outline d-inline-flex align-items-center gap-1">
+            <i class="bi bi-person-circle"></i>
+            <span>Login / Register</span>
+          </a>
+
+          <a href="emergency.html" class="btn-emergency-nav text-decoration-none active" title="112 (Emergency) & 108 (Ambulance)">
+            <i class="bi bi-telephone-fill"></i>
+            <span>SOS 112 / 108</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="py-5">
+    <div class="container">
+      
+      <!-- Top High-Visibility Emergency Header -->
+      <div class="emergency-hero-banner p-4 p-md-5 rounded-4 mb-5 shadow-lg" style="background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); color: #ffffff !important;">
+        <div class="row align-items-center gy-4">
+          <div class="col-lg-8">
+            <span class="badge px-3 py-2 fw-bold text-uppercase mb-3" style="color: #dc2626 !important; background-color: #ffffff !important;">
+              <i class="bi bi-shield-fill-exclamation me-1" style="color: #dc2626 !important;"></i> Immediate Medical Danger
+            </span>
+            <h1 class="fw-bold mb-3 text-white" style="color: #ffffff !important;">Are You In An Emergency?</h1>
+            <p class="fs-5 mb-0 text-white" style="color: #ffffff !important; opacity: 0.95;">
+              If someone is unresponsive, choking, experiencing crushing chest pain, or bleeding heavily, do not wait for AI evaluation. Call 112 (emergency) or 108 (ambulance) immediately.
+            </p>
+          </div>
+          <div class="col-lg-4 text-lg-end">
+            <div class="d-flex flex-column gap-2">
+              <a href="tel:112" class="btn btn-light btn-lg text-danger fw-bold px-4 py-2 shadow fs-5 w-100">
+                <i class="bi bi-telephone-fill me-2"></i> Call 112 (Emergency)
+              </a>
+              <a href="tel:108" class="btn btn-outline-light btn-lg fw-bold px-4 py-2 shadow fs-5 w-100" style="color: #ffffff !important; border-color: #ffffff !important;">
+                <i class="bi bi-truck-front-fill me-2"></i> Call 108 (Ambulance)
+              </a>
+            </div>
+            <div class="small text-white text-center mt-2" style="color: #ffffff !important; opacity: 0.95;">
+              National Emergency: <strong class="text-white" style="color: #ffffff !important;">112</strong> • Medical Ambulance: <strong class="text-white" style="color: #ffffff !important;">108</strong> • Maternal Care: <strong class="text-white" style="color: #ffffff !important;">102</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Action Cards: Nearest Care & Urgent Hotlines -->
+      <div class="row g-4 mb-5">
+        <div class="col-md-4">
+          <div class="med-card-static border h-100 p-4">
+            <div class="icon-box-circle" style="background-color: var(--med-danger-light); color: var(--med-danger);">
+              <i class="bi bi-hospital-fill"></i>
+            </div>
+            <h5 class="fw-bold text-dark">Nearest Emergency Room</h5>
+            <p class="small text-muted mb-2">
+              <strong>St. Mary's Acute Trauma Hospital</strong><br>
+              450 Medical Center Blvd (1.4 miles away)
+            </p>
+            <div class="badge bg-light text-danger border mb-3">
+              <i class="bi bi-clock me-1"></i> Current ER Wait Time: ~14 mins
+            </div>
+            <button class="btn btn-outline-danger btn-sm w-100" onclick="alert('Opening GPS directions to St. Mary\'s Acute Trauma Hospital (Simulated)');">
+              <i class="bi bi-geo-alt-fill me-1"></i> Get ER Driving Directions
+            </button>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="med-card-static border h-100 p-4">
+            <div class="icon-box-circle icon-box-blue">
+              <i class="bi bi-capsule"></i>
+            </div>
+            <h5 class="fw-bold text-dark">National Health & Poison Helpline</h5>
+            <p class="small text-muted mb-3">
+              National Health Helpline (MoHFW) & Poison Information Centre for toxic exposures and emergencies.
+            </p>
+            <div class="fs-4 fw-bold text-primary mb-3">1075 / 1800-116-117</div>
+            <a href="tel:1075" class="btn btn-med-primary btn-sm w-100">
+              <i class="bi bi-telephone-outbound me-1"></i> Call Health Helpline (1075)
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="med-card-static border h-100 p-4">
+            <div class="icon-box-circle icon-box-teal">
+              <i class="bi bi-chat-heart-fill"></i>
+            </div>
+            <h5 class="fw-bold text-dark">Tele-MANAS Mental Health Lifeline</h5>
+            <p class="small text-muted mb-3">
+              Free, confidential 24/7 mental health crisis support and suicide prevention counseling in India.
+            </p>
+            <div class="fs-4 fw-bold text-teal mb-3">14416 / 1800-891-4416</div>
+            <a href="tel:14416" class="btn btn-med-teal btn-sm w-100">
+              <i class="bi bi-telephone-outbound me-1"></i> Call Tele-MANAS (14416)
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step-by-Step Critical First Aid Protocols Accordion -->
+      <div class="mb-5">
+        <div class="text-center mb-4">
+          <span class="badge badge-soft-blue px-3 py-2 text-uppercase mb-2">Life-Saving Protocols</span>
+          <h2 class="fw-bold">Step-by-Step First Aid Guides</h2>
+          <p class="text-muted">Evidence-based instructions while awaiting first responders.</p>
+        </div>
+
+        <div class="accordion shadow-sm" id="firstAidAccordion">
+          
+          <!-- Accordion Item 1: Adult CPR -->
+          <div class="accordion-item border mb-3 rounded-3 overflow-hidden">
+            <h2 class="accordion-header" id="headingCPR">
+              <button class="accordion-button fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCPR" aria-expanded="true" aria-controls="collapseCPR">
+                <i class="bi bi-heart-pulse-fill text-danger me-2 fs-5"></i>
+                1. Hands-Only CPR (Unresponsive Person Not Breathing)
+              </button>
+            </h2>
+            <div id="collapseCPR" class="accordion-collapse collapse show" aria-labelledby="headingCPR" data-bs-parent="#firstAidAccordion">
+              <div class="accordion-body p-4 bg-light">
+                <div class="row g-3">
+                  <div class="col-md-4">
+                    <div class="p-3 bg-white border rounded h-100">
+                      <strong class="text-primary d-block mb-1">Step 1: Check & Call</strong>
+                      <p class="small text-muted mb-0">Tap shoulder firmly: "Are you okay?". If no response, call 112 (emergency) or 108 (ambulance) immediately and send someone for medical help or an AED.</p>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="p-3 bg-white border rounded h-100">
+                      <strong class="text-primary d-block mb-1">Step 2: Hand Position</strong>
+                      <p class="small text-muted mb-0">Place the heel of one hand in the center of the chest. Interlock your other hand on top with elbows locked straight.</p>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="p-3 bg-white border rounded h-100">
+                      <strong class="text-primary d-block mb-1">Step 3: Push Hard & Fast</strong>
+                      <p class="small text-muted mb-0">Compress at 100-120 BPM (to the beat of "Stayin' Alive"), at least 2 inches deep. Allow chest to recoil between compressions.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Accordion Item 2: Choking (Heimlich) -->
+          <div class="accordion-item border mb-3 rounded-3 overflow-hidden">
+            <h2 class="accordion-header" id="headingChoking">
+              <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseChoking" aria-expanded="false" aria-controls="collapseChoking">
+                <i class="bi bi-person-x-fill text-warning me-2 fs-5"></i>
+                2. Choking (Conscious Adult - Heimlich Maneuver)
+              </button>
+            </h2>
+            <div id="collapseChoking" class="accordion-collapse collapse" aria-labelledby="headingChoking" data-bs-parent="#firstAidAccordion">
+              <div class="accordion-body p-4 bg-light">
+                <ol class="small text-dark mb-0">
+                  <li class="mb-2"><strong>Confirm Choking:</strong> Ask "Are you choking?". If they cannot speak, cough, or breathe, initiate abdominal thrusts.</li>
+                  <li class="mb-2"><strong>Stand Behind:</strong> Wrap your arms around the person's waist and lean them slightly forward.</li>
+                  <li class="mb-2"><strong>Make a Fist:</strong> Place thumb side of fist just above the navel, well below the breastbone.</li>
+                  <li class="mb-0"><strong>Inward & Upward Thrusts:</strong> Grasp fist with other hand and give quick, upward thrusts until the object is expelled.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <!-- Accordion Item 3: Suspected Stroke (FAST) -->
+          <div class="accordion-item border mb-3 rounded-3 overflow-hidden">
+            <h2 class="accordion-header" id="headingStroke">
+              <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseStroke" aria-expanded="false" aria-controls="collapseStroke">
+                <i class="bi bi-activity text-teal me-2 fs-5"></i>
+                3. Stroke Recognition Protocol (F.A.S.T.)
+              </button>
+            </h2>
+            <div id="collapseStroke" class="accordion-collapse collapse" aria-labelledby="headingStroke" data-bs-parent="#firstAidAccordion">
+              <div class="accordion-body p-4 bg-light">
+                <div class="row g-2">
+                  <div class="col-sm-6 col-md-3">
+                    <div class="p-3 bg-white border rounded text-center">
+                      <span class="fs-4 fw-bold text-danger d-block">F</span>
+                      <strong class="d-block small">Face Drooping</strong>
+                      <span class="small text-muted">Does one side of face droop when smiling?</span>
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-md-3">
+                    <div class="p-3 bg-white border rounded text-center">
+                      <span class="fs-4 fw-bold text-danger d-block">A</span>
+                      <strong class="d-block small">Arm Weakness</strong>
+                      <span class="small text-muted">Does one arm drift downward when raised?</span>
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-md-3">
+                    <div class="p-3 bg-white border rounded text-center">
+                      <span class="fs-4 fw-bold text-danger d-block">S</span>
+                      <strong class="d-block small">Speech Slurred</strong>
+                      <span class="small text-muted">Is speech slurred or strange when speaking?</span>
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-md-3">
+                    <div class="p-3 bg-white border rounded text-center">
+                      <span class="fs-4 fw-bold text-danger d-block">T</span>
+                      <strong class="d-block small">Time to Call 112 / 108</strong>
+                      <span class="small text-muted">Note time symptoms started; call 112 or 108 instantly.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Accordion Item 4: Severe Bleeding -->
+          <div class="accordion-item border rounded-3 overflow-hidden">
+            <h2 class="accordion-header" id="headingBleeding">
+              <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBleeding" aria-expanded="false" aria-controls="collapseBleeding">
+                <i class="bi bi-droplet-half text-danger me-2 fs-5"></i>
+                4. Severe Hemorrhage / Bleeding Control
+              </button>
+            </h2>
+            <div id="collapseBleeding" class="accordion-collapse collapse" aria-labelledby="headingBleeding" data-bs-parent="#firstAidAccordion">
+              <div class="accordion-body p-4 bg-light">
+                <ul class="small text-dark mb-0">
+                  <li class="mb-2"><strong>Direct Pressure:</strong> Apply firm, continuous pressure directly over the wound with sterile gauze or clean cloth.</li>
+                  <li class="mb-2"><strong>Do Not Remove Soaked Gauze:</strong> Add more pads on top rather than lifting existing gauze, to preserve forming clots.</li>
+                  <li class="mb-0"><strong>Tourniquet (Life-Threatening Limb Bleeding):</strong> Apply 2-3 inches above wound (never on a joint) and tighten until bleeding ceases. Note exact time applied.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ========================================================================
+       SHARED FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <!-- Prominent Medical Disclaimer Box -->
+      <div class="footer-disclaimer-box">
+        <i class="bi bi-info-circle-fill disclaimer-icon"></i>
+        <div>
+          <h6 class="fw-bold mb-1 text-dark">Medical Safety Disclaimer:</h6>
+          <p class="footer-disclaimer-text">
+            This platform utilizes agentic artificial intelligence designed to assist, educate, and coordinate healthcare information. 
+            <span class="mandatory-note">AI suggestions are for guidance only, not a medical diagnosis. Please consult a doctor.</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="row g-4 mb-4">
+        <!-- Col 1: Brand -->
+        <div class="col-lg-4 col-md-6">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <img src="../images/logo.svg" alt="AegisHealth AI" width="34" height="34">
+            <span class="fw-bold fs-5 text-dark">AegisHealth<span class="text-teal">.AI</span></span>
+          </div>
+          <div class="fw-bold text-dark small mb-2">Agentic AI-Powered Healthcare Intelligence and Patient Assistance System</div>
+          <p class="text-muted small mb-3">
+            An advanced agentic AI healthcare intelligence ecosystem connecting patients with autonomous triage, medication cross-checking, and physician-supervised decision support.
+          </p>
+          <div class="agent-status-badge">
+            <span class="pulse-dot"></span>
+            <span>Multi-Agent Swarm Operational</span>
+          </div>
+        </div>
+
+        <!-- Col 2: Navigation -->
+        <div class="col-lg-2 col-md-6 col-6">
+          <h6 class="footer-heading">Platform Modules</h6>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home Overview</a></li>
+            <li><a href="patient-assistant.html">AI Assistant</a></li>
+            <li><a href="symptom-checker.html">Symptom Checker</a></li>
+            <li><a href="doctor-intelligence.html">Clinical Portal</a></li>
+            <li><a href="appointments.html">Appointments</a></li>
+            <li><a href="health-records.html">Lab Records</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Agents -->
+        <div class="col-lg-3 col-md-6 col-6">
+          <h6 class="footer-heading">Autonomous Agents</h6>
+          <ul class="footer-links">
+            <li><a href="patient-assistant.html">Dr. Nexus (Coordinator)</a></li>
+            <li><a href="symptom-checker.html">Triage Sentinel (ESI Level)</a></li>
+            <li><a href="patient-assistant.html">RxGuard (Pharma Safety)</a></li>
+            <li><a href="health-records.html">LabInsight (EHR Biomarkers)</a></li>
+            <li><a href="patient-assistant.html">NutriHealth (Lifestyle)</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Urgent Emergency -->
+        <div class="col-lg-3 col-md-6">
+          <h6 class="footer-heading text-danger"><i class="bi bi-shield-fill-exclamation me-1"></i>Emergency Hotlines (India)</h6>
+          <div class="p-3 bg-light rounded border border-danger-subtle">
+            <div class="fw-bold text-dark small mb-1">Immediate Assistance:</div>
+            <div class="fs-6 fw-bold text-danger mb-2">112 (Emergency) • 108 (Ambulance)</div>
+            <div class="small text-muted mb-1">Maternal & Child Health: <strong>102</strong></div>
+            <div class="small text-muted mb-2">National Health Helpline: <strong>1075</strong></div>
+            <a href="emergency.html" class="btn btn-sm btn-outline-danger w-100 mt-1 fw-semibold">
+              <i class="bi bi-geo-alt-fill me-1"></i> Emergency SOS Hub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <div>
+          &copy; 2026 <strong>Agentic AI-Powered Healthcare Intelligence and Patient Assistance System</strong>. All rights reserved.
+        </div>
+        <div class="d-flex gap-3">
+          <span class="text-muted">Clean Medical UI • Bootstrap 5 & Vanilla JS</span>
+          <a href="#" class="text-muted" onclick="alert('All user medical prompts and vitals are kept local in this frontend simulation.'); return false;">Privacy Note</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Global Shared JS -->
+  <script src="../js/main.js"></script>
+</body>
+</html>

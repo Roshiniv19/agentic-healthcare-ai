@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Dashboard & CDSS - AegisHealth AI</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Custom Medical Theme Stylesheet -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       SHARED NAVBAR
+       ======================================================================== -->
+  <nav class="navbar navbar-expand-xl site-navbar sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">
+        <div class="brand-icon">
+          <img src="../images/logo.svg" alt="AegisHealth AI" width="40" height="40">
+        </div>
+        <div>
+          <span class="text-primary fw-bold">AegisHealth</span><span class="text-teal">.AI</span>
+          <span class="brand-text-sub">Healthcare Intelligence</span>
+        </div>
+      </a>
+
+      <!-- Mobile Toggler -->
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-list fs-2 text-primary"></i>
+      </button>
+
+      <!-- Navigation Menu -->
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav mx-auto mb-2 mb-xl-0">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">
+              <i class="bi bi-house-door"></i> Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="patient-assistant.html">
+              <i class="bi bi-chat-heart"></i> AI Assistant
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="symptom-checker.html">
+              <i class="bi bi-clipboard2-pulse"></i> Symptom Checker
+            </a>
+          </li>
+          
+          <!-- Dashboards Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" id="dashboardsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-speedometer2"></i> Dashboards
+            </a>
+            <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="dashboardsDropdown">
+              <li>
+                <a class="dropdown-item py-2" href="patient-dashboard.html">
+                  <i class="bi bi-person-badge text-teal me-2"></i> Patient Dashboard
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item py-2 active" href="doctor-dashboard.html">
+                  <i class="bi bi-hospital text-primary me-2"></i> Doctor Dashboard
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="reminders.html">
+              <i class="bi bi-alarm"></i> Reminders
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="appointments.html">
+              <i class="bi bi-calendar2-check"></i> Appointments
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="health-records.html">
+              <i class="bi bi-file-earmark-medical"></i> Lab Records
+            </a>
+          </li>
+        </ul>
+
+        <!-- Right Action Items -->
+        <div class="d-flex align-items-center gap-2 mt-2 mt-xl-0">
+          <a href="login.html" class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center gap-1">
+            <i class="bi bi-box-arrow-right"></i>
+            <span>Log Out</span>
+          </a>
+
+          <a href="emergency.html" class="btn-emergency-nav text-decoration-none" title="112 (Emergency) & 108 (Ambulance)">
+            <i class="bi bi-telephone-fill"></i>
+            <span>SOS 112 / 108</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="py-4">
+    <div class="container">
+      
+      <!-- Top Safety Banner -->
+      <div class="safety-disclaimer-banner">
+        <i class="bi bi-shield-check"></i>
+        <div class="flex-grow-1">
+          <strong>Doctor-in-the-Loop Protocol:</strong> AI differential diagnosis and triage classifications assist clinical cognition. Licensed physicians maintain autonomous medical diagnosis and treatment authority.
+        </div>
+        <button type="button" class="btn-close emergency-banner-close" aria-label="Close"></button>
+      </div>
+
+      <!-- Doctor Profile Bar -->
+      <div class="med-card-static border shadow-sm p-4 mb-4" style="background: linear-gradient(135deg, #f0fdfa 0%, #f0f9ff 100%);">
+        <div class="row align-items-center gy-3">
+          <div class="col-md-7 d-flex align-items-center gap-3">
+            <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width: 64px; height: 64px; background-color: var(--med-teal-light); color: var(--med-teal);">
+              <i class="bi bi-hospital fs-1"></i>
+            </div>
+            <div>
+              <div class="d-flex align-items-center gap-2 mb-1">
+                <h3 class="fw-bold text-dark mb-0">Dr. Marcus Reed, MD, FACC</h3>
+                <span class="badge badge-soft-teal"><i class="bi bi-check-circle-fill me-1"></i>On Duty</span>
+              </div>
+              <div class="small text-muted">
+                Chief of Cardiology & Acute Care • St. Jude Heart Institute • Registration ID: <strong>MCI-19402</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-5 text-md-end">
+            <div class="d-flex flex-wrap gap-2 justify-content-md-end">
+              <button class="btn btn-sm btn-outline-secondary" onclick="window.location.reload();">
+                <i class="bi bi-arrow-repeat me-1"></i> Refresh Queue
+              </button>
+              <button class="btn btn-sm btn-med-teal" onclick="showToast('EHR Connected', 'Synchronized with Hospital EHR System.', 'success');">
+                <i class="bi bi-cloud-arrow-up me-1"></i> Sync Hospital EHR
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Doctor Stats Strip -->
+      <div class="row g-3 mb-4">
+        <div class="col-sm-6 col-lg-3">
+          <div class="stat-widget">
+            <div class="stat-widget-icon" style="background-color: var(--med-danger-light); color: var(--med-danger);">
+              <i class="bi bi-shield-fill-exclamation"></i>
+            </div>
+            <div>
+              <div class="stat-number">2</div>
+              <div class="stat-label">Critical Red-Flags</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+          <div class="stat-widget">
+            <div class="stat-widget-icon icon-box-blue">
+              <i class="bi bi-people-fill"></i>
+            </div>
+            <div>
+              <div class="stat-number">5</div>
+              <div class="stat-label">Active Triage Queue</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+          <div class="stat-widget">
+            <div class="stat-widget-icon icon-box-teal">
+              <i class="bi bi-calendar2-week-fill"></i>
+            </div>
+            <div>
+              <div class="stat-number">8</div>
+              <div class="stat-label">Today's Appointments</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+          <div class="stat-widget">
+            <div class="stat-widget-icon" style="background-color: var(--med-success-light); color: var(--med-success);">
+              <i class="bi bi-check2-circle"></i>
+            </div>
+            <div>
+              <div class="stat-number">98.4%</div>
+              <div class="stat-label">AI Concordance Rate</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Doctor Workspace Tabs -->
+      <ul class="nav nav-pills mb-4 p-1 bg-white border rounded-3" id="docTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active fw-bold small py-2" id="queue-tab" data-bs-toggle="pill" data-bs-target="#queue-panel" type="button" role="tab" aria-selected="true">
+            <i class="bi bi-activity me-1"></i> Live Patient Triage Queue (5)
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link fw-bold small py-2" id="schedule-tab" data-bs-toggle="pill" data-bs-target="#schedule-panel" type="button" role="tab" aria-selected="false">
+            <i class="bi bi-calendar-check me-1"></i> Today's Schedule & Consultations (8)
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link fw-bold small py-2" id="alerts-tab" data-bs-toggle="pill" data-bs-target="#alerts-panel" type="button" role="tab" aria-selected="false">
+            <i class="bi bi-bell-fill me-1 text-danger"></i> Autonomous Sentinel Alerts (3)
+          </button>
+        </li>
+      </ul>
+
+      <div class="tab-content" id="docTabsContent">
+        
+        <!-- TAB 1: LIVE PATIENT TRIAGE QUEUE -->
+        <div class="tab-pane fade show active" id="queue-panel" role="tabpanel" aria-labelledby="queue-tab">
+          <div class="doctor-table-card">
+            
+            <!-- Table Toolbar -->
+            <div class="p-3 border-bottom d-flex flex-wrap align-items-center justify-content-between gap-3 bg-light">
+              <div class="btn-group btn-group-sm" role="group">
+                <button type="button" class="btn btn-primary filter-tab-btn active" data-filter="All">All Patients (5)</button>
+                <button type="button" class="btn btn-light filter-tab-btn" data-filter="Critical">Critical (2)</button>
+                <button type="button" class="btn btn-light filter-tab-btn" data-filter="Urgent">Urgent (1)</button>
+                <button type="button" class="btn btn-light filter-tab-btn" data-filter="Priority">Priority (1)</button>
+                <button type="button" class="btn btn-light filter-tab-btn" data-filter="Routine">Routine (1)</button>
+              </div>
+
+              <div style="min-width: 260px;">
+                <div class="input-group input-group-sm">
+                  <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-muted"></i></span>
+                  <input type="text" id="search-patient-input" class="form-control border-start-0" placeholder="Filter patient name, ID, or condition...">
+                </div>
+              </div>
+            </div>
+
+            <!-- Patients Data Table -->
+            <div class="table-responsive">
+              <table class="table table-custom align-middle">
+                <thead>
+                  <tr>
+                    <th>Patient Details</th>
+                    <th>Chief Complaint & Wait</th>
+                    <th>Triage Urgency</th>
+                    <th>Live Vitals (HR / BP / SpO2)</th>
+                    <th>Assigned Attending</th>
+                    <th class="text-end">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="patient-table-body">
+                  <!-- Populated via js/dashboard.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: TODAY'S CONSULTATION SCHEDULE -->
+        <div class="tab-pane fade" id="schedule-panel" role="tabpanel" aria-labelledby="schedule-tab">
+          <div class="med-card-static border shadow-sm p-4">
+            <div class="d-flex align-items-center justify-content-between pb-3 border-bottom mb-4">
+              <div>
+                <h5 class="fw-bold text-dark mb-0">Scheduled Consultations for Today</h5>
+                <small class="text-muted">Total: 8 patients booked (5 Telehealth, 3 In-Clinic)</small>
+              </div>
+              <button class="btn btn-sm btn-med-primary" onclick="alert('Slot availability calendar opened (Simulated).');">
+                <i class="bi bi-clock-plus me-1"></i> Add Walk-In Slot
+              </button>
+            </div>
+
+            <div class="d-flex flex-column gap-3">
+              
+              <!-- Appt 1 -->
+              <div class="p-3 border rounded-3 bg-light d-flex flex-wrap align-items-center justify-content-between gap-3">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="rounded-circle d-flex align-items-center justify-content-center text-primary" style="width: 44px; height: 44px; background-color: var(--med-primary-light);">
+                    <i class="bi bi-camera-video fs-5"></i>
+                  </div>
+                  <div>
+                    <strong class="text-dark">Priya Sharma</strong> <span class="badge badge-soft-teal ms-1">Telehealth</span>
+                    <div class="small text-muted">Time: <strong>10:30 AM</strong> • Ref #APT-904128 • Reason: Blood pressure review</div>
+                  </div>
+                </div>
+                <div class="d-flex gap-2">
+                  <a href="patient-dashboard.html" class="btn btn-sm btn-outline-secondary">View Profile</a>
+                  <button class="btn btn-sm btn-med-teal" onclick="alert('Launching encrypted Telehealth video call with Priya Sharma.');">
+                    <i class="bi bi-camera-video me-1"></i> Start Consultation
+                  </button>
+                </div>
+              </div>
+
+              <!-- Appt 2 -->
+              <div class="p-3 border rounded-3 bg-white d-flex flex-wrap align-items-center justify-content-between gap-3">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="rounded-circle d-flex align-items-center justify-content-center text-teal" style="width: 44px; height: 44px; background-color: var(--med-teal-light);">
+                    <i class="bi bi-geo-alt fs-5"></i>
+                  </div>
+                  <div>
+                    <strong class="text-dark">David Kim</strong> <span class="badge badge-soft-blue ms-1">In-Clinic Room 3B</span>
+                    <div class="small text-muted">Time: <strong>11:15 AM</strong> • Ref #APT-904129 • Reason: Productive cough & fever</div>
+                  </div>
+                </div>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-sm btn-outline-primary" onclick="showToast('Chart Opened', 'Loading EHR for David Kim...', 'info');">
+                    <i class="bi bi-file-medical me-1"></i> Open Chart
+                  </button>
+                </div>
+              </div>
+
+              <!-- Appt 3 -->
+              <div class="p-3 border rounded-3 bg-white d-flex flex-wrap align-items-center justify-content-between gap-3">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="rounded-circle d-flex align-items-center justify-content-center text-primary" style="width: 44px; height: 44px; background-color: var(--med-primary-light);">
+                    <i class="bi bi-camera-video fs-5"></i>
+                  </div>
+                  <div>
+                    <strong class="text-dark">James Wilson</strong> <span class="badge badge-soft-teal ms-1">Telehealth</span>
+                    <div class="small text-muted">Time: <strong>2:00 PM</strong> • Ref #APT-904130 • Reason: Routine HbA1c review</div>
+                  </div>
+                </div>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-sm btn-outline-primary" onclick="showToast('Chart Opened', 'Loading EHR for James Wilson...', 'info');">
+                    <i class="bi bi-file-medical me-1"></i> Open Chart
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: CDSS SENTINEL ALERTS -->
+        <div class="tab-pane fade" id="alerts-panel" role="tabpanel" aria-labelledby="alerts-tab">
+          <div class="med-card-static border shadow-sm p-4">
+            <h5 class="fw-bold text-dark mb-3"><i class="bi bi-cpu text-primary me-2"></i>Autonomous AI Sentinel Clinical Feed</h5>
+            
+            <div class="alert alert-danger border d-flex align-items-start gap-3 py-3 mb-3">
+              <i class="bi bi-exclamation-triangle-fill fs-3 text-danger flex-shrink-0"></i>
+              <div>
+                <strong>Critical ECG Alert: Patient Eleanor Vance (PT-9041)</strong>
+                <div class="small mb-2">Automated telemetry flagged potential ST-segment elevation across leads V2-V4. Immediate troponin lab test & stat cardiology consult recommended.</div>
+                <button class="btn btn-sm btn-danger view-patient-btn" data-id="PT-9041">Review AI Chart & Order Cath Lab</button>
+              </div>
+            </div>
+
+            <div class="alert alert-warning border d-flex align-items-start gap-3 py-3 mb-3">
+              <i class="bi bi-shield-exclamation fs-3 text-warning flex-shrink-0"></i>
+              <div>
+                <strong>Acute Tenderness Flag: Patient Amara Okafor (PT-9045)</strong>
+                <div class="small mb-2">McBurney's point tenderness reported. Suspected acute appendicitis (84% probability). Abdominal ultrasound queued.</div>
+                <button class="btn btn-sm btn-warning view-patient-btn" data-id="PT-9045">Review Surgical Chart</button>
+              </div>
+            </div>
+
+            <div class="alert alert-info border d-flex align-items-start gap-3 py-3">
+              <i class="bi bi-info-circle-fill fs-3 text-primary flex-shrink-0"></i>
+              <div>
+                <strong>Prescription Interaction Intercept: RxGuard Agent</strong>
+                <div class="small">No severe contraindications flagged for active inpatients over the last 6 hours.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ========================================================================
+       MODAL: DETAILED PATIENT AI CLINICAL CHART & DECISION SUPPORT
+       ======================================================================== -->
+  <div class="modal fade" id="patientDetailModal" tabindex="-1" aria-labelledby="patientDetailModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-light">
+          <div>
+            <h5 class="modal-title fw-bold text-dark" id="modal-patient-name">Patient Name</h5>
+            <small class="text-muted" id="modal-patient-meta">Gender, Age • Admitted info</small>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body p-4">
+          <!-- Urgency Banner inside Modal -->
+          <div class="d-flex align-items-center justify-content-between p-3 rounded mb-3 bg-light border">
+            <div>
+              <span class="small text-muted d-block">Presenting Complaint:</span>
+              <strong class="text-dark" id="modal-patient-complaint">Complaint text</strong>
+            </div>
+            <div id="modal-patient-triage" class="badge">Triage Status</div>
+          </div>
+
+          <!-- Vitals Strip -->
+          <h6 class="fw-bold text-dark small text-uppercase mb-2"><i class="bi bi-activity text-danger me-1"></i>Monitored Vital Signs</h6>
+          <div class="row g-2 mb-4">
+            <div class="col-3">
+              <div class="p-2 border rounded text-center bg-light">
+                <small class="text-muted d-block">Heart Rate</small>
+                <strong class="text-danger" id="modal-vital-hr">--</strong>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="p-2 border rounded text-center bg-light">
+                <small class="text-muted d-block">Blood Pressure</small>
+                <strong class="text-primary" id="modal-vital-bp">--</strong>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="p-2 border rounded text-center bg-light">
+                <small class="text-muted d-block">SpO2 Oxygen</small>
+                <strong class="text-info" id="modal-vital-spo2">--</strong>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="p-2 border rounded text-center bg-light">
+                <small class="text-muted d-block">Temp</small>
+                <strong class="text-warning" id="modal-vital-temp">--</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- AI Clinical Alerts -->
+          <div class="alert alert-warning border d-flex align-items-start gap-2 py-2 mb-4">
+            <i class="bi bi-exclamation-triangle-fill fs-5 text-warning flex-shrink-0"></i>
+            <div>
+              <strong>Autonomous Sentinel Alert:</strong>
+              <div class="small" id="modal-patient-alerts">No alerts</div>
+            </div>
+          </div>
+
+          <!-- Differential Diagnosis Probabilities -->
+          <h6 class="fw-bold text-dark small text-uppercase mb-2"><i class="bi bi-diagram-3-fill text-primary me-1"></i>AI Differential Diagnosis Probabilities</h6>
+          <div class="p-3 border rounded bg-light mb-3" id="modal-patient-diff">
+            <!-- Differential bars populated dynamically via js/dashboard.js -->
+          </div>
+        </div>
+
+        <div class="modal-footer bg-light justify-content-between">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+          <div class="d-flex gap-2">
+            <button type="button" class="btn btn-outline-primary" id="btn-order-labs">
+              <i class="bi bi-prescription2 me-1"></i> Order Stat Labs & Imaging
+            </button>
+            <button type="button" class="btn btn-med-primary" id="btn-approve-plan">
+              <i class="bi bi-check-circle-fill me-1"></i> Approve Clinical Pathway
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       SHARED FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <!-- Prominent Medical Disclaimer Box -->
+      <div class="footer-disclaimer-box">
+        <i class="bi bi-info-circle-fill disclaimer-icon"></i>
+        <div>
+          <h6 class="fw-bold mb-1 text-dark">Medical Safety Disclaimer:</h6>
+          <p class="footer-disclaimer-text">
+            This platform utilizes agentic artificial intelligence designed to assist, educate, and coordinate healthcare information. 
+            <span class="mandatory-note">AI suggestions are for guidance only, not a medical diagnosis. Please consult a doctor.</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="row g-4 mb-4">
+        <!-- Col 1: Brand -->
+        <div class="col-lg-4 col-md-6">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <img src="../images/logo.svg" alt="AegisHealth AI" width="34" height="34">
+            <span class="fw-bold fs-5 text-dark">AegisHealth<span class="text-teal">.AI</span></span>
+          </div>
+          <div class="fw-bold text-dark small mb-2">Agentic AI-Powered Healthcare Intelligence and Patient Assistance System</div>
+          <p class="text-muted small mb-3">
+            An advanced agentic AI healthcare intelligence ecosystem connecting patients with autonomous triage, medication cross-checking, and physician-supervised decision support.
+          </p>
+          <div class="agent-status-badge">
+            <span class="pulse-dot"></span>
+            <span>Multi-Agent Swarm Operational</span>
+          </div>
+        </div>
+
+        <!-- Col 2: Navigation -->
+        <div class="col-lg-2 col-md-6 col-6">
+          <h6 class="footer-heading">Platform Modules</h6>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home Overview</a></li>
+            <li><a href="patient-assistant.html">AI Assistant</a></li>
+            <li><a href="symptom-checker.html">Symptom Checker</a></li>
+            <li><a href="patient-dashboard.html">Patient Dashboard</a></li>
+            <li><a href="doctor-dashboard.html">Doctor Dashboard</a></li>
+            <li><a href="reminders.html">Pill Reminders</a></li>
+            <li><a href="appointments.html">Appointments</a></li>
+            <li><a href="health-records.html">Lab Records</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Agents -->
+        <div class="col-lg-3 col-md-6 col-6">
+          <h6 class="footer-heading">Autonomous Agents</h6>
+          <ul class="footer-links">
+            <li><a href="patient-assistant.html">Dr. Nexus (Coordinator)</a></li>
+            <li><a href="symptom-checker.html">Triage Sentinel (ESI Level)</a></li>
+            <li><a href="patient-assistant.html">RxGuard (Pharma Safety)</a></li>
+            <li><a href="health-records.html">LabInsight (EHR Biomarkers)</a></li>
+            <li><a href="patient-assistant.html">NutriHealth (Lifestyle)</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Urgent Emergency -->
+        <div class="col-lg-3 col-md-6">
+          <h6 class="footer-heading text-danger"><i class="bi bi-shield-fill-exclamation me-1"></i>Emergency Hotlines (India)</h6>
+          <div class="p-3 bg-light rounded border border-danger-subtle">
+            <div class="fw-bold text-dark small mb-1">Immediate Assistance:</div>
+            <div class="fs-6 fw-bold text-danger mb-2">112 (Emergency) • 108 (Ambulance)</div>
+            <div class="small text-muted mb-1">Maternal & Child Health: <strong>102</strong></div>
+            <div class="small text-muted mb-2">National Health Helpline: <strong>1075</strong></div>
+            <a href="emergency.html" class="btn btn-sm btn-outline-danger w-100 mt-1 fw-semibold">
+              <i class="bi bi-geo-alt-fill me-1"></i> Emergency SOS Hub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <div>
+          &copy; 2026 <strong>Agentic AI-Powered Healthcare Intelligence and Patient Assistance System</strong>. All rights reserved.
+        </div>
+        <div class="d-flex gap-3">
+          <span class="text-muted">Clean Medical UI • Bootstrap 5 & Vanilla JS</span>
+          <a href="#" class="text-muted" onclick="alert('All user medical prompts and vitals are kept local in this frontend simulation.'); return false;">Privacy Note</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Global Shared JS -->
+  <script src="../js/main.js"></script>
+
+  <!-- Doctor Dashboard Logic -->
+  <script src="../js/dashboard.js"></script>
+</body>
+</html>

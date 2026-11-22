@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medication & Health Reminders - AegisHealth AI</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Custom Medical Theme Stylesheet -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       SHARED NAVBAR
+       ======================================================================== -->
+  <nav class="navbar navbar-expand-xl site-navbar sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">
+        <div class="brand-icon">
+          <img src="../images/logo.svg" alt="AegisHealth AI" width="40" height="40">
+        </div>
+        <div>
+          <span class="text-primary fw-bold">AegisHealth</span><span class="text-teal">.AI</span>
+          <span class="brand-text-sub">Healthcare Intelligence</span>
+        </div>
+      </a>
+
+      <!-- Mobile Toggler -->
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-list fs-2 text-primary"></i>
+      </button>
+
+      <!-- Navigation Menu -->
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav mx-auto mb-2 mb-xl-0">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">
+              <i class="bi bi-house-door"></i> Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="patient-assistant.html">
+              <i class="bi bi-chat-heart"></i> AI Assistant
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="symptom-checker.html">
+              <i class="bi bi-clipboard2-pulse"></i> Symptom Checker
+            </a>
+          </li>
+          
+          <!-- Dashboards Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dashboardsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-speedometer2"></i> Dashboards
+            </a>
+            <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="dashboardsDropdown">
+              <li>
+                <a class="dropdown-item py-2" href="patient-dashboard.html">
+                  <i class="bi bi-person-badge text-teal me-2"></i> Patient Dashboard
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item py-2" href="doctor-dashboard.html">
+                  <i class="bi bi-hospital text-primary me-2"></i> Doctor Dashboard
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" href="reminders.html">
+              <i class="bi bi-alarm"></i> Reminders
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="appointments.html">
+              <i class="bi bi-calendar2-check"></i> Appointments
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="health-records.html">
+              <i class="bi bi-file-earmark-medical"></i> Lab Records
+            </a>
+          </li>
+        </ul>
+
+        <!-- Right Action Items -->
+        <div class="d-flex align-items-center gap-2 mt-2 mt-xl-0">
+          <a href="login.html" class="btn btn-sm btn-med-outline d-inline-flex align-items-center gap-1">
+            <i class="bi bi-person-circle"></i>
+            <span>Login / Register</span>
+          </a>
+
+          <a href="emergency.html" class="btn-emergency-nav text-decoration-none" title="112 (Emergency) & 108 (Ambulance)">
+            <i class="bi bi-telephone-fill"></i>
+            <span>SOS 112 / 108</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="py-4">
+    <div class="container">
+      
+      <!-- Top Safety Banner -->
+      <div class="safety-disclaimer-banner">
+        <i class="bi bi-shield-check"></i>
+        <div class="flex-grow-1">
+          <strong>Medication & Adherence Protocol:</strong> AI suggestions are for guidance only, not a medical diagnosis. Please consult a doctor. Never alter or discontinue prescribed medication dosages without consulting your licensed physician.
+        </div>
+        <button type="button" class="btn-close emergency-banner-close" aria-label="Close"></button>
+      </div>
+
+      <!-- Header & Adherence Bar -->
+      <div class="med-card-static border shadow-sm p-4 mb-4" style="background: linear-gradient(135deg, #f0fdfa 0%, #f0f9ff 100%);">
+        <div class="row align-items-center gy-3">
+          <div class="col-lg-7">
+            <span class="badge badge-soft-teal px-3 py-1 text-uppercase mb-2">Smart Health Schedules</span>
+            <h2 class="fw-bold text-dark mb-1">Medication & Daily Health Reminders</h2>
+            <p class="text-muted small mb-0">
+              Synchronized with the <strong>RxGuard Safety Agent</strong>. Track pill regimens, hydration targets, and upcoming doctor appointments with automated adherence alarms.
+            </p>
+          </div>
+
+          <div class="col-lg-5 text-lg-end">
+            <div class="d-flex flex-wrap gap-2 justify-content-lg-end align-items-center">
+              <div class="p-2 px-3 bg-white rounded-3 border d-inline-flex align-items-center gap-2 text-start">
+                <div class="rounded-circle d-flex align-items-center justify-content-center text-success" style="width: 40px; height: 40px; background-color: var(--med-success-light);">
+                  <i class="bi bi-check-circle-fill fs-5"></i>
+                </div>
+                <div>
+                  <div class="small text-muted" style="font-size: 0.72rem;">Weekly Adherence</div>
+                  <strong class="text-dark fs-6">94% (13 / 14 Taken)</strong>
+                </div>
+              </div>
+
+              <button class="btn btn-med-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addReminderModal">
+                <i class="bi bi-plus-circle me-1"></i> Add New Reminder
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Reminders Grid -->
+      <div class="row g-4">
+        
+        <!-- Left: Today's Medication Timeline (8 cols) -->
+        <div class="col-lg-8">
+          <div class="med-card-static border shadow-sm p-4 mb-4">
+            <div class="d-flex align-items-center justify-content-between pb-3 border-bottom mb-4">
+              <div>
+                <h5 class="fw-bold text-dark mb-0"><i class="bi bi-capsule-pill text-teal me-2"></i>Today's Medication Timeline</h5>
+                <small class="text-muted" id="reminder-today-date">Sunday, Nov 22, 2026</small>
+              </div>
+              <span class="badge badge-soft-teal">4 Doses Scheduled</span>
+            </div>
+
+            <div class="d-flex flex-column gap-3" id="med-reminder-list">
+              
+              <!-- Dose 1: Morning (Taken) -->
+              <div class="p-3 border rounded-3 bg-light d-flex flex-wrap align-items-center justify-content-between gap-3">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="form-check m-0">
+                    <input class="form-check-input reminder-checkbox" type="checkbox" id="rem-1" checked>
+                  </div>
+                  <div>
+                    <div class="d-flex align-items-center gap-2">
+                      <h6 class="fw-bold text-dark mb-0">Metformin Hydrochloride</h6>
+                      <span class="badge badge-soft-blue">500 mg</span>
+                    </div>
+                    <small class="text-muted">Morning (8:00 AM) • Take with breakfast • Oral tablet</small>
+                  </div>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                  <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1">
+                    <i class="bi bi-check2-circle me-1"></i> Taken at 8:12 AM
+                  </span>
+                  <button class="btn btn-sm btn-light border text-muted" title="Snooze / Edit" onclick="showToast('Reminder Info', 'Metformin 500mg: Next morning dose at 8:00 AM.', 'info');">
+                    <i class="bi bi-three-dots-vertical"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Dose 2: Lunch (Due Now) -->
+              <div class="p-3 border rounded-3 bg-white d-flex flex-wrap align-items-center justify-content-between gap-3 border-teal shadow-sm">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="form-check m-0">
+                    <input class="form-check-input reminder-checkbox" type="checkbox" id="rem-2">
+                  </div>
+                  <div>
+                    <div class="d-flex align-items-center gap-2">
+                      <h6 class="fw-bold text-dark mb-0">Amoxicillin Trihydrate</h6>
+                      <span class="badge badge-soft-blue">500 mg</span>
+                      <span class="badge bg-danger-subtle text-danger border border-danger-subtle">Due Now</span>
+                    </div>
+                    <small class="text-muted">Afternoon (1:30 PM) • Complete 5-day antibiotic course • Take with water</small>
+                  </div>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                  <button class="btn btn-sm btn-med-teal btn-mark-taken" data-id="rem-2">
+                    <i class="bi bi-check-lg me-1"></i> Mark Taken
+                  </button>
+                  <button class="btn btn-sm btn-outline-secondary" onclick="showToast('Snoozed', 'Reminder snoozed for 15 minutes.', 'warning');">
+                    <i class="bi bi-alarm me-1"></i> Snooze 15m
+                  </button>
+                </div>
+              </div>
+
+              <!-- Dose 3: Afternoon Supplement -->
+              <div class="p-3 border rounded-3 bg-white d-flex flex-wrap align-items-center justify-content-between gap-3">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="form-check m-0">
+                    <input class="form-check-input reminder-checkbox" type="checkbox" id="rem-3">
+                  </div>
+                  <div>
+                    <div class="d-flex align-items-center gap-2">
+                      <h6 class="fw-bold text-dark mb-0">Vitamin D3 & Calcium</h6>
+                      <span class="badge badge-soft-blue">1000 IU</span>
+                    </div>
+                    <small class="text-muted">Afternoon (2:00 PM) • Post-lunch bone health supplement</small>
+                  </div>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                  <span class="badge bg-light text-muted border px-2 py-1">
+                    <i class="bi bi-clock me-1"></i> Scheduled 2:00 PM
+                  </span>
+                </div>
+              </div>
+
+              <!-- Dose 4: Bedtime -->
+              <div class="p-3 border rounded-3 bg-white d-flex flex-wrap align-items-center justify-content-between gap-3">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="form-check m-0">
+                    <input class="form-check-input reminder-checkbox" type="checkbox" id="rem-4">
+                  </div>
+                  <div>
+                    <div class="d-flex align-items-center gap-2">
+                      <h6 class="fw-bold text-dark mb-0">Atorvastatin Calcium</h6>
+                      <span class="badge badge-soft-blue">10 mg</span>
+                    </div>
+                    <small class="text-muted">Bedtime (9:00 PM) • Cholesterol control • Oral tablet</small>
+                  </div>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                  <span class="badge bg-light text-muted border px-2 py-1">
+                    <i class="bi bi-moon-stars me-1"></i> Scheduled 9:00 PM
+                  </span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Habit & Hydration Tracker -->
+          <div class="med-card-static border shadow-sm p-4">
+            <div class="d-flex align-items-center justify-content-between pb-3 border-bottom mb-3">
+              <div>
+                <h5 class="fw-bold text-dark mb-0"><i class="bi bi-droplet-fill text-primary me-2"></i>Daily Hydration & Habit Reminders</h5>
+                <small class="text-muted">Track healthy daily routines recommended by NutriHealth Agent</small>
+              </div>
+              <span class="badge badge-soft-blue" id="water-count-badge">5 / 8 Glasses</span>
+            </div>
+
+            <!-- Interactive Water Glasses Tracker -->
+            <label class="form-label small fw-bold text-dark mb-2">Click to log each glass of water (250ml each):</label>
+            <div class="d-flex flex-wrap gap-2 mb-4" id="water-glasses-row">
+              <button class="btn btn-sm btn-primary water-glass-btn active" data-glass="1"><i class="bi bi-cup-straw me-1"></i>1</button>
+              <button class="btn btn-sm btn-primary water-glass-btn active" data-glass="2"><i class="bi bi-cup-straw me-1"></i>2</button>
+              <button class="btn btn-sm btn-primary water-glass-btn active" data-glass="3"><i class="bi bi-cup-straw me-1"></i>3</button>
+              <button class="btn btn-sm btn-primary water-glass-btn active" data-glass="4"><i class="bi bi-cup-straw me-1"></i>4</button>
+              <button class="btn btn-sm btn-primary water-glass-btn active" data-glass="5"><i class="bi bi-cup-straw me-1"></i>5</button>
+              <button class="btn btn-sm btn-light border water-glass-btn" data-glass="6"><i class="bi bi-cup-straw me-1"></i>6</button>
+              <button class="btn btn-sm btn-light border water-glass-btn" data-glass="7"><i class="bi bi-cup-straw me-1"></i>7</button>
+              <button class="btn btn-sm btn-light border water-glass-btn" data-glass="8"><i class="bi bi-cup-straw me-1"></i>8</button>
+            </div>
+
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="p-3 bg-light rounded-3 border d-flex align-items-center justify-content-between">
+                  <div>
+                    <strong class="text-dark d-block small">Evening Blood Pressure Check</strong>
+                    <span class="text-muted small">Daily at 6:30 PM • Rest 5 mins before logging</span>
+                  </div>
+                  <span class="badge bg-warning-subtle text-warning-emphasis border">Pending</span>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="p-3 bg-light rounded-3 border d-flex align-items-center justify-content-between">
+                  <div>
+                    <strong class="text-dark d-block small">Post-Dinner Brisk Walk (25 mins)</strong>
+                    <span class="text-muted small">Cardio maintenance • 7:30 PM reminder</span>
+                  </div>
+                  <span class="badge bg-light text-muted border">Scheduled</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Refill Alerts & Upcoming Consultations (4 cols) -->
+        <div class="col-lg-4">
+          
+          <!-- Upcoming Clinical Reminders -->
+          <div class="med-card-static border shadow-sm p-4 mb-4">
+            <h6 class="fw-bold text-dark mb-3 d-flex align-items-center gap-2">
+              <i class="bi bi-calendar-event text-primary"></i> Doctor Appointment Alerts
+            </h6>
+
+            <div class="p-3 bg-light rounded-3 border mb-3">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <strong class="text-dark small">Cardiology Follow-Up</strong>
+                <span class="badge badge-soft-teal">In 22 Hours</span>
+              </div>
+              <div class="small text-muted mb-2">Dr. Marcus Reed • Tomorrow, 10:30 AM</div>
+              <div class="small fw-semibold text-primary mb-2"><i class="bi bi-camera-video me-1"></i>Telehealth Video Link</div>
+              <a href="appointments.html" class="btn btn-sm btn-outline-primary w-100">
+                View Appointment Details
+              </a>
+            </div>
+
+            <div class="p-3 bg-light rounded-3 border">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <strong class="text-dark small">Quarterly Fasting Lipid Panel</strong>
+                <span class="badge bg-light text-muted border">Dec 14, 2026</span>
+              </div>
+              <div class="small text-muted mb-2">Metropolitan Lab Node • 12-hour fasting required</div>
+              <a href="health-records.html" class="btn btn-sm btn-outline-secondary w-100">
+                View Past Lab Baseline
+              </a>
+            </div>
+          </div>
+
+          <!-- Medication Refill Alerts -->
+          <div class="med-card-static border shadow-sm p-4 mb-4">
+            <div class="d-flex align-items-center justify-content-between pb-2 border-bottom mb-3">
+              <h6 class="fw-bold text-dark mb-0 d-flex align-items-center gap-2">
+                <i class="bi bi-box2-heart text-danger"></i> Pharmacy Refill Alerts
+              </h6>
+              <span class="badge bg-danger-subtle text-danger border">1 Low</span>
+            </div>
+
+            <div class="p-3 bg-warning-subtle bg-opacity-25 border border-warning-subtle rounded-3 mb-3">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <strong class="text-dark small">Metformin 500mg</strong>
+                <span class="badge bg-danger text-white">4 Days Left</span>
+              </div>
+              <p class="small text-muted mb-2">
+                Prescription: #RX-8841 • Remaining: 8 tablets
+              </p>
+              <button class="btn btn-sm btn-warning w-100 fw-semibold text-dark" onclick="showToast('Refill Requested', '1-Click Refill sent to Apollo / MedPlus Pharmacy.', 'success');">
+                <i class="bi bi-cart-plus me-1"></i> Order 30-Day Refill
+              </button>
+            </div>
+
+            <div class="p-3 bg-light rounded-3 border">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <strong class="text-dark small">Atorvastatin 10mg</strong>
+                <span class="badge bg-success-subtle text-success border">24 Days Left</span>
+              </div>
+              <p class="small text-muted mb-0">Stock level sufficient.</p>
+            </div>
+          </div>
+
+          <!-- AI Interaction Check Badge -->
+          <div class="med-card-static border p-4 bg-light">
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <i class="bi bi-shield-check text-teal fs-4"></i>
+              <h6 class="fw-bold text-dark mb-0">RxGuard Sentinel Active</h6>
+            </div>
+            <p class="small text-muted mb-2">
+              All active scheduled doses have been validated for cross-interactions and food compatibilities.
+            </p>
+            <a href="patient-assistant.html?prompt=Check%20my%20current%20prescription%20list%20for%20interactions" class="small fw-bold text-teal">
+              Ask RxGuard about drug interactions &rarr;
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ========================================================================
+       MODAL: ADD NEW MEDICATION REMINDER
+       ======================================================================== -->
+  <div class="modal fade" id="addReminderModal" tabindex="-1" aria-labelledby="addReminderModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-light">
+          <h5 class="modal-title fw-bold text-dark" id="addReminderModalLabel">
+            <i class="bi bi-alarm-fill text-primary me-2"></i>Add Medication Reminder
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <form id="add-reminder-form">
+          <div class="modal-body p-4">
+            <div class="mb-3">
+              <label for="new-med-name" class="form-label fw-bold small text-dark">Medication Name</label>
+              <input type="text" class="form-control" id="new-med-name" required placeholder="e.g. Lisinopril or Paracetamol">
+            </div>
+
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label for="new-med-dosage" class="form-label fw-bold small text-dark">Dosage / Strength</label>
+                <input type="text" class="form-control" id="new-med-dosage" required placeholder="e.g. 10 mg or 500 mg">
+              </div>
+              <div class="col-6">
+                <label for="new-med-form" class="form-label fw-bold small text-dark">Form</label>
+                <select class="form-select" id="new-med-form">
+                  <option value="Tablet">Oral Tablet</option>
+                  <option value="Capsule">Capsule</option>
+                  <option value="Syrup">Oral Liquid / Syrup</option>
+                  <option value="Inhaler">Inhaler / Puff</option>
+                  <option value="Drops">Eye/Ear Drops</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label for="new-med-time" class="form-label fw-bold small text-dark">Scheduled Time</label>
+                <input type="time" class="form-control" id="new-med-time" value="08:00" required>
+              </div>
+              <div class="col-6">
+                <label for="new-med-freq" class="form-label fw-bold small text-dark">Frequency</label>
+                <select class="form-select" id="new-med-freq">
+                  <option value="Once daily">Once Daily</option>
+                  <option value="Twice daily">Twice Daily (12h)</option>
+                  <option value="Three times daily">3 Times Daily (8h)</option>
+                  <option value="As needed">As Needed (PRN)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="new-med-instructions" class="form-label fw-bold small text-dark">Instructions & Notes</label>
+              <input type="text" class="form-control" id="new-med-instructions" placeholder="e.g. Take immediately after breakfast with water">
+            </div>
+
+            <div class="form-check small text-muted">
+              <input class="form-check-input" type="checkbox" id="new-med-sound" checked>
+              <label class="form-check-label" for="new-med-sound">
+                Play audible alarm notification on device when due
+              </label>
+            </div>
+          </div>
+
+          <div class="modal-footer bg-light">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-med-primary">
+              <i class="bi bi-check2-circle me-1"></i> Save Reminder Schedule
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       SHARED FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <!-- Prominent Medical Disclaimer Box -->
+      <div class="footer-disclaimer-box">
+        <i class="bi bi-info-circle-fill disclaimer-icon"></i>
+        <div>
+          <h6 class="fw-bold mb-1 text-dark">Medical Safety Disclaimer:</h6>
+          <p class="footer-disclaimer-text">
+            This platform utilizes agentic artificial intelligence designed to assist, educate, and coordinate healthcare information. 
+            <span class="mandatory-note">AI suggestions are for guidance only, not a medical diagnosis. Please consult a doctor.</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="row g-4 mb-4">
+        <!-- Col 1: Brand -->
+        <div class="col-lg-4 col-md-6">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <img src="../images/logo.svg" alt="AegisHealth AI" width="34" height="34">
+            <span class="fw-bold fs-5 text-dark">AegisHealth<span class="text-teal">.AI</span></span>
+          </div>
+          <div class="fw-bold text-dark small mb-2">Agentic AI-Powered Healthcare Intelligence and Patient Assistance System</div>
+          <p class="text-muted small mb-3">
+            An advanced agentic AI healthcare intelligence ecosystem connecting patients with autonomous triage, medication cross-checking, and physician-supervised decision support.
+          </p>
+          <div class="agent-status-badge">
+            <span class="pulse-dot"></span>
+            <span>Multi-Agent Swarm Operational</span>
+          </div>
+        </div>
+
+        <!-- Col 2: Navigation -->
+        <div class="col-lg-2 col-md-6 col-6">
+          <h6 class="footer-heading">Platform Modules</h6>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home Overview</a></li>
+            <li><a href="patient-assistant.html">AI Assistant</a></li>
+            <li><a href="symptom-checker.html">Symptom Checker</a></li>
+            <li><a href="patient-dashboard.html">Patient Dashboard</a></li>
+            <li><a href="doctor-dashboard.html">Doctor Dashboard</a></li>
+            <li><a href="reminders.html">Pill Reminders</a></li>
+            <li><a href="appointments.html">Appointments</a></li>
+            <li><a href="health-records.html">Lab Records</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Agents -->
+        <div class="col-lg-3 col-md-6 col-6">
+          <h6 class="footer-heading">Autonomous Agents</h6>
+          <ul class="footer-links">
+            <li><a href="patient-assistant.html">Dr. Nexus (Coordinator)</a></li>
+            <li><a href="symptom-checker.html">Triage Sentinel (ESI Level)</a></li>
+            <li><a href="patient-assistant.html">RxGuard (Pharma Safety)</a></li>
+            <li><a href="health-records.html">LabInsight (EHR Biomarkers)</a></li>
+            <li><a href="patient-assistant.html">NutriHealth (Lifestyle)</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Urgent Emergency -->
+        <div class="col-lg-3 col-md-6">
+          <h6 class="footer-heading text-danger"><i class="bi bi-shield-fill-exclamation me-1"></i>Emergency Hotlines (India)</h6>
+          <div class="p-3 bg-light rounded border border-danger-subtle">
+            <div class="fw-bold text-dark small mb-1">Immediate Assistance:</div>
+            <div class="fs-6 fw-bold text-danger mb-2">112 (Emergency) • 108 (Ambulance)</div>
+            <div class="small text-muted mb-1">Maternal & Child Health: <strong>102</strong></div>
+            <div class="small text-muted mb-2">National Health Helpline: <strong>1075</strong></div>
+            <a href="emergency.html" class="btn btn-sm btn-outline-danger w-100 mt-1 fw-semibold">
+              <i class="bi bi-geo-alt-fill me-1"></i> Emergency SOS Hub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <div>
+          &copy; 2026 <strong>Agentic AI-Powered Healthcare Intelligence and Patient Assistance System</strong>. All rights reserved.
+        </div>
+        <div class="d-flex gap-3">
+          <span class="text-muted">Clean Medical UI • Bootstrap 5 & Vanilla JS</span>
+          <a href="#" class="text-muted" onclick="alert('All user medical prompts and vitals are kept local in this frontend simulation.'); return false;">Privacy Note</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Global Shared JS -->
+  <script src="../js/main.js"></script>
+
+  <!-- Reminders Interactive Logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Mark taken buttons
+      document.querySelectorAll('.btn-mark-taken').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const targetId = btn.getAttribute('data-id');
+          const cb = document.getElementById(targetId);
+          if (cb) cb.checked = true;
+          btn.outerHTML = '<span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1"><i class="bi bi-check2-circle me-1"></i> Taken Just Now</span>';
+          showToast('Dose Recorded', 'Adherence recorded. Keep up the great health habit!', 'success');
+        });
+      });
+
+      // Water glasses interactive logging
+      const waterButtons = document.querySelectorAll('.water-glass-btn');
+      const waterCountBadge = document.getElementById('water-count-badge');
+      waterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          btn.classList.toggle('active');
+          btn.classList.toggle('btn-primary');
+          btn.classList.toggle('btn-light');
+          btn.classList.toggle('border');
+          const activeCount = document.querySelectorAll('.water-glass-btn.active').length;
+          if (waterCountBadge) {
+            waterCountBadge.textContent = `${activeCount} / 8 Glasses (${activeCount * 250} ml)`;
+          }
+          showToast('Hydration Updated', `Logged ${activeCount} of 8 glasses for today.`, 'info');
+        });
+      });
+
+      // Add reminder form
+      const addForm = document.getElementById('add-reminder-form');
+      if (addForm) {
+        addForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const medName = document.getElementById('new-med-name').value;
+          const dosage = document.getElementById('new-med-dosage').value;
+          const time = document.getElementById('new-med-time').value;
+
+          const modalEl = document.getElementById('addReminderModal');
+          if (typeof bootstrap !== 'undefined') {
+            const modalInstance = bootstrap.Modal.getInstance(modalEl);
+            if (modalInstance) modalInstance.hide();
+          }
+
+          const container = document.getElementById('med-reminder-list');
+          if (container) {
+            const newItemHtml = `
+              <div class="p-3 border rounded-3 bg-white d-flex flex-wrap align-items-center justify-content-between gap-3 shadow-sm">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="form-check m-0">
+                    <input class="form-check-input reminder-checkbox" type="checkbox">
+                  </div>
+                  <div>
+                    <div class="d-flex align-items-center gap-2">
+                      <h6 class="fw-bold text-dark mb-0">${medName}</h6>
+                      <span class="badge badge-soft-blue">${dosage}</span>
+                    </div>
+                    <small class="text-muted">Scheduled for ${time} • New schedule</small>
+                  </div>
+                </div>
+                <div>
+                  <span class="badge bg-light text-muted border px-2 py-1">
+                    <i class="bi bi-clock me-1"></i> ${time}
+                  </span>
+                </div>
+              </div>
+            `;
+            container.insertAdjacentHTML('beforeend', newItemHtml);
+          }
+
+          showToast('Reminder Created', `Scheduled reminder for ${medName} ${dosage} at ${time}.`, 'success');
+          addForm.reset();
+        });
+      }
+    });
+  </script>
+</body>
+</html>

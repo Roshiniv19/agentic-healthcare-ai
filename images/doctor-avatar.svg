@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <linearGradient id="docGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e0f2fe"/>
+      <stop offset="100%" stop-color="#ccfbf1"/>
+    </linearGradient>
+  </defs>
+  <circle cx="50" cy="50" r="48" fill="url(#docGrad)" stroke="#38bdf8" stroke-width="2"/>
+  <!-- Head -->
+  <circle cx="50" cy="38" r="16" fill="#fde047"/>
+  <!-- Hair -->
+  <path d="M34 36 C34 26 40 22 50 22 C60 22 66 26 66 36 C64 34 60 33 50 33 C40 33 36 34 34 36 Z" fill="#334155"/>
+  <!-- Lab Coat & Torso -->
+  <path d="M25 80 C25 64 36 56 50 56 C64 56 75 64 75 80 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <!-- Blue Scrub collar -->
+  <polygon points="50,56 42,66 58,66" fill="#0284c7"/>
+  <!-- Stethoscope -->
+  <path d="M42 66 C42 75 58 75 58 66" stroke="#0f172a" stroke-width="2" fill="none"/>
+  <circle cx="50" cy="74" r="3" fill="#0d9488"/>
+</svg>

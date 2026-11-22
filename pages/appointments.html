@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Specialist Recommender & Appointments - AegisHealth AI</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Custom Medical Theme Stylesheet -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       SHARED NAVBAR
+       ======================================================================== -->
+  <nav class="navbar navbar-expand-xl site-navbar sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">
+        <div class="brand-icon">
+          <img src="../images/logo.svg" alt="AegisHealth AI" width="40" height="40">
+        </div>
+        <div>
+          <span class="text-primary fw-bold">AegisHealth</span><span class="text-teal">.AI</span>
+          <span class="brand-text-sub">Healthcare Intelligence</span>
+        </div>
+      </a>
+
+      <!-- Mobile Toggler -->
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-list fs-2 text-primary"></i>
+      </button>
+
+      <!-- Navigation Menu -->
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav mx-auto mb-2 mb-xl-0">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">
+              <i class="bi bi-house-door"></i> Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="patient-assistant.html">
+              <i class="bi bi-chat-heart"></i> AI Assistant
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="symptom-checker.html">
+              <i class="bi bi-clipboard2-pulse"></i> Symptom Checker
+            </a>
+          </li>
+          
+          <!-- Dashboards Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dashboardsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-speedometer2"></i> Dashboards
+            </a>
+            <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="dashboardsDropdown">
+              <li>
+                <a class="dropdown-item py-2" href="patient-dashboard.html">
+                  <i class="bi bi-person-badge text-teal me-2"></i> Patient Dashboard
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item py-2" href="doctor-dashboard.html">
+                  <i class="bi bi-hospital text-primary me-2"></i> Doctor Dashboard
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="reminders.html">
+              <i class="bi bi-alarm"></i> Reminders
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="appointments.html">
+              <i class="bi bi-calendar2-check"></i> Appointments
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="health-records.html">
+              <i class="bi bi-file-earmark-medical"></i> Lab Records
+            </a>
+          </li>
+        </ul>
+
+        <!-- Right Action Items -->
+        <div class="d-flex align-items-center gap-2 mt-2 mt-xl-0">
+          <a href="login.html" class="btn btn-sm btn-med-outline d-inline-flex align-items-center gap-1">
+            <i class="bi bi-person-circle"></i>
+            <span>Login / Register</span>
+          </a>
+
+          <a href="emergency.html" class="btn-emergency-nav text-decoration-none" title="112 (Emergency) & 108 (Ambulance)">
+            <i class="bi bi-telephone-fill"></i>
+            <span>SOS 112 / 108</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="py-5">
+    <div class="container">
+      
+      <!-- Top Disclaimer Alert -->
+      <div class="safety-disclaimer-banner">
+        <i class="bi bi-info-circle-fill"></i>
+        <div class="flex-grow-1">
+          <strong>Doctor Consultation Scheduling:</strong> AI suggestions are for guidance only, not a medical diagnosis. Please consult a doctor. Connect with board-certified physicians for clinical diagnosis and prescriptions.
+        </div>
+        <button type="button" class="btn-close emergency-banner-close" aria-label="Close"></button>
+      </div>
+
+      <!-- Header & Intro -->
+      <div class="row align-items-end mb-4 gy-3">
+        <div class="col-lg-7">
+          <span class="badge badge-soft-blue px-3 py-2 text-uppercase mb-2">Smart Specialist Matching</span>
+          <h2 class="fw-bold">Find & Schedule Medical Specialists</h2>
+          <p class="text-muted mb-0">
+            Book in-person visits or virtual telehealth consultations with verified physicians matched to your symptom triage needs.
+          </p>
+        </div>
+        <div class="col-lg-5">
+          <div class="input-group">
+            <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-muted"></i></span>
+            <input type="text" id="search-doctor-input" class="form-control border-start-0" placeholder="Search doctor by name, specialty, or clinic...">
+          </div>
+        </div>
+      </div>
+
+      <!-- Specialty Filter Pills -->
+      <div class="d-flex flex-wrap gap-2 mb-4 pb-2 border-bottom">
+        <button class="btn btn-sm btn-primary specialty-filter-btn active" data-specialty="All">All Specialists</button>
+        <button class="btn btn-sm btn-light specialty-filter-btn" data-specialty="Cardiology">Cardiology</button>
+        <button class="btn btn-sm btn-light specialty-filter-btn" data-specialty="Pulmonology">Pulmonology</button>
+        <button class="btn btn-sm btn-light specialty-filter-btn" data-specialty="Neurology">Neurology</button>
+        <button class="btn btn-sm btn-light specialty-filter-btn" data-specialty="Internal Medicine">Internal Medicine</button>
+        <button class="btn btn-sm btn-light specialty-filter-btn" data-specialty="General Surgery">General Surgery</button>
+        <button class="btn btn-sm btn-light specialty-filter-btn" data-specialty="Dermatology">Dermatology</button>
+      </div>
+
+      <!-- Doctors Grid Container -->
+      <div class="row g-4" id="doctors-list">
+        <!-- Dynamically rendered via js/appointments.js -->
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ========================================================================
+       BOOKING MODAL
+       ======================================================================== -->
+  <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-light">
+          <div>
+            <h5 class="modal-title fw-bold text-dark" id="booking-doctor-name">Schedule Consultation</h5>
+            <small class="text-muted" id="booking-doctor-spec">Doctor Specialty</small>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <form id="booking-form">
+          <div class="modal-body p-4">
+            <div class="alert alert-info py-2 px-3 small border mb-3" id="booking-doctor-fee">
+              Consultation Fee: $120
+            </div>
+
+            <div class="mb-3">
+              <label for="book-patient-name" class="form-label fw-bold small text-dark">Patient Full Name</label>
+              <input type="text" class="form-control" id="book-patient-name" required placeholder="e.g. Alex Johnson">
+            </div>
+
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label for="book-phone" class="form-label fw-bold small text-dark">Phone Number</label>
+                <input type="tel" class="form-control" id="book-phone" required placeholder="(555) 000-0000">
+              </div>
+              <div class="col-6">
+                <label for="book-slot-time" class="form-label fw-bold small text-dark">Select Slot</label>
+                <select class="form-select" id="book-slot-time">
+                  <option value="Today 3:30 PM">Today 3:30 PM</option>
+                  <option value="Tomorrow 10:00 AM">Tomorrow 10:00 AM</option>
+                  <option value="Tomorrow 2:15 PM">Tomorrow 2:15 PM</option>
+                  <option value="Thursday 11:30 AM">Thursday 11:30 AM</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label fw-bold small text-dark">Consultation Format</label>
+              <div class="d-flex gap-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="format" id="fmt-clinic" value="In-Clinic" checked>
+                  <label class="form-check-label small" for="fmt-clinic">In-Person Clinic Visit</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="format" id="fmt-tele" value="Telehealth">
+                  <label class="form-check-label small" for="fmt-tele">Virtual Telehealth Video</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="book-reason" class="form-label fw-bold small text-dark">Reason for Visit / AI Triage Note</label>
+              <textarea class="form-control" id="book-reason" rows="2" placeholder="Briefly describe symptoms or recent test results..."></textarea>
+            </div>
+
+            <div class="form-check small text-muted">
+              <input class="form-check-input" type="checkbox" id="book-attach-summary" checked>
+              <label class="form-check-label" for="book-attach-summary">
+                Attach my AI Symptom Assessment Summary to doctor's intake chart
+              </label>
+            </div>
+          </div>
+
+          <div class="modal-footer bg-light">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-med-primary">
+              <i class="bi bi-check2-circle me-1"></i> Confirm Booking
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       SHARED FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <!-- Prominent Medical Disclaimer Box -->
+      <div class="footer-disclaimer-box">
+        <i class="bi bi-info-circle-fill disclaimer-icon"></i>
+        <div>
+          <h6 class="fw-bold mb-1 text-dark">Medical Safety Disclaimer:</h6>
+          <p class="footer-disclaimer-text">
+            This platform utilizes agentic artificial intelligence designed to assist, educate, and coordinate healthcare information. 
+            <span class="mandatory-note">AI suggestions are for guidance only, not a medical diagnosis. Please consult a doctor.</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="row g-4 mb-4">
+        <!-- Col 1: Brand -->
+        <div class="col-lg-4 col-md-6">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <img src="../images/logo.svg" alt="AegisHealth AI" width="34" height="34">
+            <span class="fw-bold fs-5 text-dark">AegisHealth<span class="text-teal">.AI</span></span>
+          </div>
+          <div class="fw-bold text-dark small mb-2">Agentic AI-Powered Healthcare Intelligence and Patient Assistance System</div>
+          <p class="text-muted small mb-3">
+            An advanced agentic AI healthcare intelligence ecosystem connecting patients with autonomous triage, medication cross-checking, and physician-supervised decision support.
+          </p>
+          <div class="agent-status-badge">
+            <span class="pulse-dot"></span>
+            <span>Multi-Agent Swarm Operational</span>
+          </div>
+        </div>
+
+        <!-- Col 2: Navigation -->
+        <div class="col-lg-2 col-md-6 col-6">
+          <h6 class="footer-heading">Platform Modules</h6>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home Overview</a></li>
+            <li><a href="patient-assistant.html">AI Assistant</a></li>
+            <li><a href="symptom-checker.html">Symptom Checker</a></li>
+            <li><a href="patient-dashboard.html">Patient Dashboard</a></li>
+            <li><a href="doctor-dashboard.html">Doctor Dashboard</a></li>
+            <li><a href="reminders.html">Pill Reminders</a></li>
+            <li><a href="appointments.html">Appointments</a></li>
+            <li><a href="health-records.html">Lab Records</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Agents -->
+        <div class="col-lg-3 col-md-6 col-6">
+          <h6 class="footer-heading">Autonomous Agents</h6>
+          <ul class="footer-links">
+            <li><a href="patient-assistant.html">Dr. Nexus (Coordinator)</a></li>
+            <li><a href="symptom-checker.html">Triage Sentinel (ESI Level)</a></li>
+            <li><a href="patient-assistant.html">RxGuard (Pharma Safety)</a></li>
+            <li><a href="health-records.html">LabInsight (EHR Biomarkers)</a></li>
+            <li><a href="patient-assistant.html">NutriHealth (Lifestyle)</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Urgent Emergency -->
+        <div class="col-lg-3 col-md-6">
+          <h6 class="footer-heading text-danger"><i class="bi bi-shield-fill-exclamation me-1"></i>Emergency Hotlines (India)</h6>
+          <div class="p-3 bg-light rounded border border-danger-subtle">
+            <div class="fw-bold text-dark small mb-1">Immediate Assistance:</div>
+            <div class="fs-6 fw-bold text-danger mb-2">112 (Emergency) • 108 (Ambulance)</div>
+            <div class="small text-muted mb-1">Maternal & Child Health: <strong>102</strong></div>
+            <div class="small text-muted mb-2">National Health Helpline: <strong>1075</strong></div>
+            <a href="emergency.html" class="btn btn-sm btn-outline-danger w-100 mt-1 fw-semibold">
+              <i class="bi bi-geo-alt-fill me-1"></i> Emergency SOS Hub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <div>
+          &copy; 2026 <strong>Agentic AI-Powered Healthcare Intelligence and Patient Assistance System</strong>. All rights reserved.
+        </div>
+        <div class="d-flex gap-3">
+          <span class="text-muted">Clean Medical UI • Bootstrap 5 & Vanilla JS</span>
+          <a href="#" class="text-muted" onclick="alert('All user medical prompts and vitals are kept local in this frontend simulation.'); return false;">Privacy Note</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Global Shared JS -->
+  <script src="../js/main.js"></script>
+
+  <!-- Appointments Logic -->
+  <script src="../js/appointments.js"></script>
+</body>
+</html>

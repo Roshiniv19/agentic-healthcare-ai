@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Records & AI Lab Report Explainer - AegisHealth AI</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Custom Medical Theme Stylesheet -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       SHARED NAVBAR
+       ======================================================================== -->
+  <nav class="navbar navbar-expand-xl site-navbar sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">
+        <div class="brand-icon">
+          <img src="../images/logo.svg" alt="AegisHealth AI" width="40" height="40">
+        </div>
+        <div>
+          <span class="text-primary fw-bold">AegisHealth</span><span class="text-teal">.AI</span>
+          <span class="brand-text-sub">Healthcare Intelligence</span>
+        </div>
+      </a>
+
+      <!-- Mobile Toggler -->
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-list fs-2 text-primary"></i>
+      </button>
+
+      <!-- Navigation Menu -->
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav mx-auto mb-2 mb-xl-0">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">
+              <i class="bi bi-house-door"></i> Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="patient-assistant.html">
+              <i class="bi bi-chat-heart"></i> AI Assistant
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="symptom-checker.html">
+              <i class="bi bi-clipboard2-pulse"></i> Symptom Checker
+            </a>
+          </li>
+          
+          <!-- Dashboards Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dashboardsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-speedometer2"></i> Dashboards
+            </a>
+            <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="dashboardsDropdown">
+              <li>
+                <a class="dropdown-item py-2" href="patient-dashboard.html">
+                  <i class="bi bi-person-badge text-teal me-2"></i> Patient Dashboard
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item py-2" href="doctor-dashboard.html">
+                  <i class="bi bi-hospital text-primary me-2"></i> Doctor Dashboard
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="reminders.html">
+              <i class="bi bi-alarm"></i> Reminders
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="appointments.html">
+              <i class="bi bi-calendar2-check"></i> Appointments
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="health-records.html">
+              <i class="bi bi-file-earmark-medical"></i> Lab Records
+            </a>
+          </li>
+        </ul>
+
+        <!-- Right Action Items -->
+        <div class="d-flex align-items-center gap-2 mt-2 mt-xl-0">
+          <a href="login.html" class="btn btn-sm btn-med-outline d-inline-flex align-items-center gap-1">
+            <i class="bi bi-person-circle"></i>
+            <span>Login / Register</span>
+          </a>
+
+          <a href="emergency.html" class="btn-emergency-nav text-decoration-none" title="112 (Emergency) & 108 (Ambulance)">
+            <i class="bi bi-telephone-fill"></i>
+            <span>SOS 112 / 108</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="py-5">
+    <div class="container">
+      
+      <!-- Top Disclaimer Alert -->
+      <div class="safety-disclaimer-banner">
+        <i class="bi bi-info-circle-fill"></i>
+        <div class="flex-grow-1">
+          <strong>Biomarker Reference Notice:</strong> AI suggestions are for guidance only, not a medical diagnosis. Please consult a doctor. Laboratory reference ranges differ between test facilities. Always discuss findings with your prescribing physician.
+        </div>
+        <button type="button" class="btn-close emergency-banner-close" aria-label="Close"></button>
+      </div>
+
+      <!-- Header & Toggle Bar -->
+      <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
+        <div>
+          <span class="badge badge-soft-teal px-3 py-2 text-uppercase mb-2">Diagnostic Intelligence</span>
+          <h2 class="fw-bold mb-1">Health Records & AI Lab Report Explainer</h2>
+          <p class="text-muted mb-0">Understand laboratory panels with plain-English breakdowns and dietary guidance.</p>
+        </div>
+
+        <!-- Toggle View Mode Button -->
+        <div>
+          <button type="button" class="btn btn-outline-secondary p-2 px-3" id="toggle-ai-explainer">
+            <i class="bi bi-toggle-on text-teal fs-5 me-1"></i> <strong>AI Plain English Mode (Active)</strong>
+          </button>
+        </div>
+      </div>
+
+      <!-- Record Categories Filter -->
+      <div class="d-flex flex-wrap gap-2 mb-4 pb-2 border-bottom">
+        <button class="btn btn-sm btn-primary record-type-filter active" data-type="all">All Lab Panels (3)</button>
+        <button class="btn btn-sm btn-light record-type-filter" data-type="lipid">Lipid Profile</button>
+        <button class="btn btn-sm btn-light record-type-filter" data-type="metabolic">Metabolic Panel & Glucose</button>
+        <button class="btn btn-sm btn-light record-type-filter" data-type="cbc">Complete Blood Count (CBC)</button>
+      </div>
+
+      <!-- LAB PANEL 1: LIPID PROFILE -->
+      <div class="med-card-static border shadow-sm p-4 mb-4 report-card" data-category="lipid">
+        <div class="d-flex flex-wrap align-items-center justify-content-between pb-3 border-bottom mb-3 gap-2">
+          <div>
+            <h5 class="fw-bold text-dark mb-0"><i class="bi bi-droplet-fill text-danger me-2"></i>Comprehensive Lipid Profile</h5>
+            <small class="text-muted">Collected: Nov 14, 2026 • Quest Diagnostics • Order Ref #LP-4821</small>
+          </div>
+          <span class="badge badge-soft-warning px-3 py-2">
+            <i class="bi bi-exclamation-circle me-1"></i> 1 Borderline Marker
+          </span>
+        </div>
+
+        <div class="row g-3">
+          <!-- Total Cholesterol -->
+          <div class="col-md-6 col-lg-3">
+            <div class="lab-metric-card normal">
+              <div>
+                <small class="text-muted d-block">Total Cholesterol</small>
+                <strong class="fs-5 text-dark">184 mg/dL</strong>
+                <div class="view-clinical small text-muted" style="display: none;">Ref: &lt; 200 mg/dL (Normal)</div>
+                <div class="view-ai-plain small text-success fw-semibold">
+                  ✓ Healthy total fat baseline.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- LDL (Borderline High) -->
+          <div class="col-md-6 col-lg-3">
+            <div class="lab-metric-card abnormal">
+              <div>
+                <small class="text-muted d-block">LDL ("Bad" Cholesterol)</small>
+                <strong class="fs-5 text-warning">128 mg/dL</strong>
+                <div class="view-clinical small text-muted" style="display: none;">Ref: &lt; 100 mg/dL (High)</div>
+                <div class="view-ai-plain small text-dark">
+                  ⚠️ Slightly elevated. Reducing trans fats and increasing soluble fiber helps bring this down.
+                </div>
+              </div>
+              <button class="btn btn-sm btn-outline-warning btn-ask-agent-report" data-metric="LDL Cholesterol" data-value="128 mg/dL" title="Ask AI Assistant">
+                <i class="bi bi-chat-dots-fill"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- HDL -->
+          <div class="col-md-6 col-lg-3">
+            <div class="lab-metric-card normal">
+              <div>
+                <small class="text-muted d-block">HDL ("Good" Cholesterol)</small>
+                <strong class="fs-5 text-success">56 mg/dL</strong>
+                <div class="view-clinical small text-muted" style="display: none;">Ref: &gt; 50 mg/dL (Optimal)</div>
+                <div class="view-ai-plain small text-success fw-semibold">
+                  ✓ Protective cardiovascular buffer.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Triglycerides -->
+          <div class="col-md-6 col-lg-3">
+            <div class="lab-metric-card normal">
+              <div>
+                <small class="text-muted d-block">Triglycerides</small>
+                <strong class="fs-5 text-dark">138 mg/dL</strong>
+                <div class="view-clinical small text-muted" style="display: none;">Ref: &lt; 150 mg/dL (Normal)</div>
+                <div class="view-ai-plain small text-success fw-semibold">
+                  ✓ Circulating fat levels well within range.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LAB PANEL 2: METABOLIC & GLUCOSE PANEL -->
+      <div class="med-card-static border shadow-sm p-4 mb-4 report-card" data-category="metabolic">
+        <div class="d-flex flex-wrap align-items-center justify-content-between pb-3 border-bottom mb-3 gap-2">
+          <div>
+            <h5 class="fw-bold text-dark mb-0"><i class="bi bi-speedometer text-primary me-2"></i>Comprehensive Metabolic Panel (CMP)</h5>
+            <small class="text-muted">Collected: Nov 14, 2026 • Quest Diagnostics • Order Ref #CMP-9902</small>
+          </div>
+          <span class="badge badge-soft-success px-3 py-2">
+            <i class="bi bi-check-circle-fill me-1"></i> All Biomarkers Optimal
+          </span>
+        </div>
+
+        <div class="row g-3">
+          <!-- Fasting Glucose -->
+          <div class="col-md-6 col-lg-3">
+            <div class="lab-metric-card normal">
+              <div>
+                <small class="text-muted d-block">Fasting Blood Glucose</small>
+                <strong class="fs-5 text-dark">92 mg/dL</strong>
+                <div class="view-clinical small text-muted" style="display: none;">Ref: 70 - 99 mg/dL (Normal)</div>
+                <div class="view-ai-plain small text-success fw-semibold">
+                  ✓ Normal morning blood sugar levels.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Serum Creatinine -->
+          <div class="col-md-6 col-lg-3">
+            <div class="lab-metric-card normal">
+              <div>
+                <small class="text-muted d-block">Serum Creatinine</small>
+                <strong class="fs-5 text-dark">0.85 mg/dL</strong>
+                <div class="view-clinical small text-muted" style="display: none;">Ref: 0.6 - 1.2 mg/dL (Normal)</div>
+                <div class="view-ai-plain small text-success fw-semibold">
+                  ✓ Excellent kidney filtration function.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- BUN -->
+          <div class="col-md-6 col-lg-3">
+            <div class="lab-metric-card normal">
+              <div>
+                <small class="text-muted d-block">Blood Urea Nitrogen (BUN)</small>
+                <strong class="fs-5 text-dark">14 mg/dL</strong>
+                <div class="view-clinical small text-muted" style="display: none;">Ref: 7 - 20 mg/dL (Normal)</div>
+                <div class="view-ai-plain small text-success fw-semibold">
+                  ✓ Healthy protein breakdown & waste disposal.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Potassium -->
+          <div class="col-md-6 col-lg-3">
+            <div class="lab-metric-card normal">
+              <div>
+                <small class="text-muted d-block">Serum Potassium (K+)</small>
+                <strong class="fs-5 text-dark">4.2 mEq/L</strong>
+                <div class="view-clinical small text-muted" style="display: none;">Ref: 3.5 - 5.0 mEq/L (Normal)</div>
+                <div class="view-ai-plain small text-success fw-semibold">
+                  ✓ Ideal electrolyte balance for heart rhythm.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LAB PANEL 3: COMPLETE BLOOD COUNT -->
+      <div class="med-card-static border shadow-sm p-4 mb-4 report-card" data-category="cbc">
+        <div class="d-flex flex-wrap align-items-center justify-content-between pb-3 border-bottom mb-3 gap-2">
+          <div>
+            <h5 class="fw-bold text-dark mb-0"><i class="bi bi-shield-plus text-teal me-2"></i>Complete Blood Count (CBC with Differential)</h5>
+            <small class="text-muted">Collected: Nov 14, 2026 • Quest Diagnostics • Order Ref #CBC-1104</small>
+          </div>
+          <span class="badge badge-soft-success px-3 py-2">
+            <i class="bi bi-check-circle-fill me-1"></i> Normal Immune Baseline
+          </span>
+        </div>
+
+        <div class="row g-3">
+          <!-- White Blood Cells -->
+          <div class="col-md-6 col-lg-3">
+            <div class="lab-metric-card normal">
+              <div>
+                <small class="text-muted d-block">White Blood Cells (WBC)</small>
+                <strong class="fs-5 text-dark">6.8 K/uL</strong>
+                <div class="view-clinical small text-muted" style="display: none;">Ref: 4.5 - 11.0 K/uL</div>
+                <div class="view-ai-plain small text-success fw-semibold">
+                  ✓ No signs of active systemic infection.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hemoglobin -->
+          <div class="col-md-6 col-lg-3">
+            <div class="lab-metric-card normal">
+              <div>
+                <small class="text-muted d-block">Hemoglobin (Hb)</small>
+                <strong class="fs-5 text-dark">14.1 g/dL</strong>
+                <div class="view-clinical small text-muted" style="display: none;">Ref: 12.0 - 16.0 g/dL</div>
+                <div class="view-ai-plain small text-success fw-semibold">
+                  ✓ Strong oxygen-carrying capacity; no anemia.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Platelets -->
+          <div class="col-md-6 col-lg-3">
+            <div class="lab-metric-card normal">
+              <div>
+                <small class="text-muted d-block">Platelets</small>
+                <strong class="fs-5 text-dark">260 K/uL</strong>
+                <div class="view-clinical small text-muted" style="display: none;">Ref: 150 - 450 K/uL</div>
+                <div class="view-ai-plain small text-success fw-semibold">
+                  ✓ Normal blood clotting capability.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hematocrit -->
+          <div class="col-md-6 col-lg-3">
+            <div class="lab-metric-card normal">
+              <div>
+                <small class="text-muted d-block">Hematocrit</small>
+                <strong class="fs-5 text-dark">42.2 %</strong>
+                <div class="view-clinical small text-muted" style="display: none;">Ref: 37 - 48 %</div>
+                <div class="view-ai-plain small text-success fw-semibold">
+                  ✓ Healthy ratio of red blood cells to plasma.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ========================================================================
+       SHARED FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <!-- Prominent Medical Disclaimer Box -->
+      <div class="footer-disclaimer-box">
+        <i class="bi bi-info-circle-fill disclaimer-icon"></i>
+        <div>
+          <h6 class="fw-bold mb-1 text-dark">Medical Safety Disclaimer:</h6>
+          <p class="footer-disclaimer-text">
+            This platform utilizes agentic artificial intelligence designed to assist, educate, and coordinate healthcare information. 
+            <span class="mandatory-note">AI suggestions are for guidance only, not a medical diagnosis. Please consult a doctor.</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="row g-4 mb-4">
+        <!-- Col 1: Brand -->
+        <div class="col-lg-4 col-md-6">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <img src="../images/logo.svg" alt="AegisHealth AI" width="34" height="34">
+            <span class="fw-bold fs-5 text-dark">AegisHealth<span class="text-teal">.AI</span></span>
+          </div>
+          <div class="fw-bold text-dark small mb-2">Agentic AI-Powered Healthcare Intelligence and Patient Assistance System</div>
+          <p class="text-muted small mb-3">
+            An advanced agentic AI healthcare intelligence ecosystem connecting patients with autonomous triage, medication cross-checking, and physician-supervised decision support.
+          </p>
+          <div class="agent-status-badge">
+            <span class="pulse-dot"></span>
+            <span>Multi-Agent Swarm Operational</span>
+          </div>
+        </div>
+
+        <!-- Col 2: Navigation -->
+        <div class="col-lg-2 col-md-6 col-6">
+          <h6 class="footer-heading">Platform Modules</h6>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home Overview</a></li>
+            <li><a href="patient-assistant.html">AI Assistant</a></li>
+            <li><a href="symptom-checker.html">Symptom Checker</a></li>
+            <li><a href="patient-dashboard.html">Patient Dashboard</a></li>
+            <li><a href="doctor-dashboard.html">Doctor Dashboard</a></li>
+            <li><a href="reminders.html">Pill Reminders</a></li>
+            <li><a href="appointments.html">Appointments</a></li>
+            <li><a href="health-records.html">Lab Records</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Agents -->
+        <div class="col-lg-3 col-md-6 col-6">
+          <h6 class="footer-heading">Autonomous Agents</h6>
+          <ul class="footer-links">
+            <li><a href="patient-assistant.html">Dr. Nexus (Coordinator)</a></li>
+            <li><a href="symptom-checker.html">Triage Sentinel (ESI Level)</a></li>
+            <li><a href="patient-assistant.html">RxGuard (Pharma Safety)</a></li>
+            <li><a href="health-records.html">LabInsight (EHR Biomarkers)</a></li>
+            <li><a href="patient-assistant.html">NutriHealth (Lifestyle)</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Urgent Emergency -->
+        <div class="col-lg-3 col-md-6">
+          <h6 class="footer-heading text-danger"><i class="bi bi-shield-fill-exclamation me-1"></i>Emergency Hotlines (India)</h6>
+          <div class="p-3 bg-light rounded border border-danger-subtle">
+            <div class="fw-bold text-dark small mb-1">Immediate Assistance:</div>
+            <div class="fs-6 fw-bold text-danger mb-2">112 (Emergency) • 108 (Ambulance)</div>
+            <div class="small text-muted mb-1">Maternal & Child Health: <strong>102</strong></div>
+            <div class="small text-muted mb-2">National Health Helpline: <strong>1075</strong></div>
+            <a href="emergency.html" class="btn btn-sm btn-outline-danger w-100 mt-1 fw-semibold">
+              <i class="bi bi-geo-alt-fill me-1"></i> Emergency SOS Hub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <div>
+          &copy; 2026 <strong>Agentic AI-Powered Healthcare Intelligence and Patient Assistance System</strong>. All rights reserved.
+        </div>
+        <div class="d-flex gap-3">
+          <span class="text-muted">Clean Medical UI • Bootstrap 5 & Vanilla JS</span>
+          <a href="#" class="text-muted" onclick="alert('All user medical prompts and vitals are kept local in this frontend simulation.'); return false;">Privacy Note</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Global Shared JS -->
+  <script src="../js/main.js"></script>
+
+  <!-- Health Records Logic -->
+  <script src="../js/records.js"></script>
+</body>
+</html>
